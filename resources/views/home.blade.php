@@ -19,9 +19,9 @@
         </div>
     </header>
     <body>
-        <div class="eslogan">
-            <h4 class="eslogan_text">Viaja seguro</h4>
-            <h4 class="eslogan_text">A la velocidad de la luz</h4>
+        <div class="main_container">
+            <h4 class="main_text">Viaja seguro</h4>
+            <h4 class="main_text">A la velocidad de la luz</h4>
         </div>
 
         <img class="banner" src="../resources/img/banner.png" alt="banner principal">

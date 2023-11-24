@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../resources/css/login.css">
     <link rel="stylesheet" href="../resources/css/app.css">
-    <title>Login Usuario</title>
+    <title>Registro Cliente</title>
 </head>
 
     <body>
@@ -23,24 +23,32 @@
 
         <div class="main_container">
             <h4 class="main_text">Ingresa tus</h4>
-            <h4 class="main_text">credenciales</h4>
+            <h4 class="main_text">datos personales</h4>
         </div>
 
         <form action="">
             <div class="form_container">
+                <label class="form_label" for="nombre">Nombre</label>
+                <input class="form_input" type="text" name="nombre">
+                <label class="form_label" for="nombre">Apellido</label>
+                <input class="form_input" type="text" name="apellido">
                 <label class="form_label" for="correo">Correo electronico</label>
-                <input class="form_input" type="text" name="correo">
-                <label class="form_label" for="password">Contraseña</label>
-                <input class="form_input" type="text" name="password">
+                <input class="form_input" type="email" name="correo">
+                <label class="form_label" for="contrasena">Contraseña</label>
+                <input class="form_input" type="password" name="contrasena">
+                <label class="form_label" for="telefono">Telefono</label>
+                <input class="form_input" type="tel" name="telefono">
+                <label class="form_label" for="fechaNacimiento">Fecha de nacimiento</label>
+                <input class="form_input" type="date" name="fechaNacimiento">
             </div>
             <div class="button_container">
-                <button class="form_button_success">Iniciar sesion</button>
+                <button class="form_button_success">Registrarse</button>
                 <button class="form_button_back">Volver</button>
             </div>
         </form>
         <div class="description_container">
-            <p class="description_text">¿No tienes una cuenta?</p>
-            <a href=""><b>Registrate</b></a>
+            <p class="description_text">¿Ya tienes una cuenta?</p>
+            <a href=""><b>Inicia Sesion</b></a>
         </div>
         <footer>
             <div class="footer_container">
