@@ -1,8 +1,9 @@
 body{
     background-color: #EDE8EF;
+    font-family: 'Poppins', sans-serif;
 }
 
 .icon{
     width: auto;
-    height: 30px;
+    height: 40px;
 }
