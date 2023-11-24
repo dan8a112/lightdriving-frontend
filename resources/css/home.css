@@ -1,0 +1,30 @@
+.header_container{
+    font-family: 'Poppins', sans-serif;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    background-color: #032A2F;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: 1.3rem;
+    margin-left: 10px;
+    vertical-align: middle;
+    color: #EDE8EF;
+}
+
+.banner{
+    width: 100%;
+}
+
+.eslogan{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    margin-left: 10px;
+    vertical-align: middle;
+    color: #032A2F;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
