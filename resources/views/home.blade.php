@@ -14,7 +14,7 @@
 </head>
     <header>
         <div class="header_container">
-            <img class="icon" src="../resources/img/logo.svg" alt="">
+            <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
             <h3 class="title">LightDriving</h3>
         </div>
     </header>
@@ -31,16 +31,16 @@
         </div>
         
         <div class="register_container">
-            <div class="register_card">
+            <a class="register_card" href={{route('cliente.register')}}>
                 <img class="register_route" src="../resources/img/route.svg" alt="">
                 <p class="register_text">Registrate para viajar</p>
                 <img class="register_arrow" src="../resources/img/arrow.png" alt="">
-            </div>
-            <div class="register_card">
+            </a>
+            <a class="register_card" href={{route('cliente.register')}}>
                 <img class="register_car" src="../resources/img/car.svg" alt="">
                 <span class="register_text">Registrate para conducir</span>
                 <img class="register_arrow" src="../resources/img/arrow.png" alt="">
-            </div>
+            </a>
         </div>
     </body>
     <footer>

@@ -2,6 +2,7 @@
     width: 100%;
 }
 
+
 .description_container{
     font-size: 1rem;
     color: #030303;
@@ -25,6 +26,12 @@
     background-color: #032A2F;
     margin: 0 auto;
     border-radius: 5px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.register_card:hover{
+    width: 350px;
 }
 
 
