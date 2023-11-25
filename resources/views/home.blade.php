@@ -36,7 +36,7 @@
                 <p class="register_text">Registrate para viajar</p>
                 <img class="register_arrow" src="../resources/img/arrow.png" alt="">
             </a>
-            <a class="register_card" href={{route('cliente.register')}}>
+            <a class="register_card" href={{route('conductor.register')}}>
                 <img class="register_car" src="../resources/img/car.svg" alt="">
                 <span class="register_text">Registrate para conducir</span>
                 <img class="register_arrow" src="../resources/img/arrow.png" alt="">

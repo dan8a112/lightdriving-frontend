@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href={{asset('../resources/css/login.css')}}>
     <link rel="stylesheet" href={{asset('../resources/css/app.css')}}>
-    <title>Registro Cliente</title>
+    <title>Registro Conductor</title>
 </head>
 
     <body>
@@ -26,8 +26,10 @@
             <h4 class="main_text">datos personales</h4>
         </div>
 
-        <form action="">
-            <div class="form_container">
+        <form method="POST" action={{route('conductor.crear')}}>
+            @csrf
+            @method('POST')
+                <div class="form_container">
                 <label class="form_label" for="nombre">Nombre</label>
                 <input class="form_input" type="text" name="nombre">
                 <label class="form_label" for="nombre">Apellido</label>
@@ -42,13 +44,14 @@
                 <input class="form_input" type="date" name="fechaNacimiento">
             </div>
             <div class="button_container">
-                <button class="form_button_success">Registrarse</button>
-                <button class="form_button_back">Volver</button>
+                <button class="form_button_success" type="submit">Siguiente</button>
+                <a href={{route('home')}} class="form_button_back">Volver</a>
             </div>
         </form>
         <div class="description_container">
             <p class="description_text">¿Ya tienes una cuenta?</p>
-            <a href=""><b>Inicia Sesion</b></a>
+            <a href="{{route('conductor.login')}}"><b>Inicia Sesion</b></a>
+            
         </div>
         <footer>
             <div class="footer_container">

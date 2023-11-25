@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ConductorController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\UberController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +30,13 @@ Route::post('/cliente/crear', [ClienteController::class, 'crear'])->name('client
 
 
 Route::get('/cliente/register', [ClienteController::class, 'register'])->name('cliente.register');
+
+//CONDUCTOR
+Route::get('/conductor/login', [ConductorController::class, 'login'])->name('conductor.login');
+Route::post('/conductor/iniciar', [ConductorController::class, 'iniciar'])->name('conductor.iniciar');
+Route::get('/conductor/register', [ConductorController::class, 'register'])->name('conductor.register');
+Route::post('/conductor/crear', [ConductorController::class, 'crear'])->name('conductor.crear');
+
+//Uber-> Auto
+Route::get('/uber/register', [UberController::class, 'register'])->name('uber.register');
+Route::post('/uber/crear', [UberController::class, 'crear'])->name('uber.crear');

@@ -26,23 +26,23 @@
             <h4 class="main_text">credenciales</h4>
         </div>
 
-        <form method="POST" action="">
+        <form method="POST" action={{route('conductor.iniciar')}}>
             @csrf
             @method('POST')
             <div class="form_container">
-                <label class="form_label" for="correo">Correo electronico</label>
+                <label class="form_label" for="correo" >Correo electronico</label>
                 <input class="form_input" type="text" name="correo">
                 <label class="form_label" for="password">Contraseña</label>
-                <input class="form_input" type="text" name="password">
+                <input class="form_input" type="password" name="password">
             </div>
             <div class="button_container">
-                <button class="form_button_success">Iniciar sesion</button>
-                <button class="form_button_back">Volver</button>
+                <button class="form_button_success" type="submit">Iniciar sesion</button>
+                <a href="{{route('home')}}" class="form_button_back">Volver</a>
             </div>
         </form>
         <div class="description_container">
             <p class="description_text">¿No tienes una cuenta?</p>
-            <a href=""><b>Registrate</b></a>
+            <a href="{{route('conductor.register')}}"><b>Registrate</b></a>
         </div>
         
         <footer>

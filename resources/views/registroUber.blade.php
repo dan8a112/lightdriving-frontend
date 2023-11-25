@@ -26,23 +26,25 @@
             <h4 class="main_text">datos de tu vehiculo</h4>
         </div>
 
-        <form action="">
+        <form action={{route('uber.crear')}}>
             <div class="form_container">
                 <label class="form_label" for="marca">Marca</label>
                 <input class="form_input" type="text" name="marca">
                 <label class="form_label" for="color">Color</label>
                 <input class="form_input" type="text" name="color">
+                <label class="form_label" for="placa">Placa</label>
+                <input class="form_input" type="text" name="placa">
                 <label class="form_label" for="anio">Año</label>
                 <input class="form_input" type="text" name="anio">
             </div>
             <div class="button_container">
-                <button class="form_button_success">Registrarse</button>
-                <button class="form_button_back">Volver</button>
+                <button class="form_button_success" type="submit">Registrarse</button>
+                <a href="{{route('conductor.register')}}"><b>Volver</b></a>
             </div>
         </form>
         <div class="description_container">
             <p class="description_text">¿Ya tienes una cuenta?</p>
-            <a href=""><b>Inicia Sesion</b></a>
+            <a href="{{route('conductor.login')}}"><b>Inicia Sesion</b></a>
         </div>
         <div class="final_container">
             <img class="form_img" src={{asset('../resources/img/auto.jpg')}} alt="">
