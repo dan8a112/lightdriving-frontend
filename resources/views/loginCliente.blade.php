@@ -26,12 +26,14 @@
             <h4 class="main_text">credenciales</h4>
         </div>
 
-        <form action="">
+        <form method="POST" action={{route('cliente.auth')}}>
+            @csrf
+            @method('POST')
             <div class="form_container">
                 <label class="form_label" for="correo">Correo electronico</label>
                 <input class="form_input" type="text" name="correo">
-                <label class="form_label" for="password">Contraseña</label>
-                <input class="form_input" type="text" name="password">
+                <label class="form_label" for="contrasena">Contraseña</label>
+                <input class="form_input" type="text" name="contrasena">
             </div>
             <div class="button_container">
                 <button class="form_button_success">Iniciar sesion</button>

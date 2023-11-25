@@ -16,13 +16,20 @@
     padding: 8px;
     margin-bottom: 10px;
     font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
 }
 
 .form_input:focus{
     outline: none;
     border-color: #032A2F;
+}
+
+
+.form_map{
+    width: 316px;
+    margin: 20px auto;
 }
 
 .form_button_success{

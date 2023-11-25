@@ -22,9 +22,9 @@ Route::get('/', function () {
 Route::get('/home', [Controller::class, 'home'])->name('home');
 
 
-Route::get('/cliente/login', [ClienteController::class, 'login'])->name('cliente.login');
-Route::get('/cliente/register', [ClienteController::class, 'register'])->name('cliente.register');
+Route::get('/cliente/login', [ClienteController::class, 'login_view'])->name('cliente.login');
+Route::get('/cliente/register', [ClienteController::class, 'register_view'])->name('cliente.register');
 Route::post('/cliente/crear', [ClienteController::class, 'crear'])->name('cliente.crear');
+Route::post('/cliente/auth', [ClienteController::class, 'autenticar'])->name('cliente.auth');
 
-
-Route::get('/cliente/register', [ClienteController::class, 'register'])->name('cliente.register');
+//Rutas de Conductor
