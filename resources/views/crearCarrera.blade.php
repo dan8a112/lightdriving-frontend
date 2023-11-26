@@ -34,16 +34,18 @@
         <div class="form_container">
             <section class="direccion_container">
                 <img src={{asset('../resources/img/origen.png')}} alt="">
-                <input class="input_carrera" type="text" placeholder="Origen" readonly>
+                <input id="origen" class="input_carrera" type="text" placeholder="Origen" readonly>
             </section>
             <section class="direccion_container">
                 <img src={{asset('../resources/img/destino.png')}} alt="">
-                <input class="input_carrera" type="text" placeholder="Destino" readonly>
+                <input id="destino" class="input_carrera" type="text" placeholder="Destino" readonly>
             </section>
             
             <form action="">
-                <input type="hidden">
-                <input type="hidden">
+                <input id="latInicio" name="latInicio" type="hidden">
+                <input id="latFinal" name="latFinal"type="hidden">
+                <input id="lngInicio" name="lngInicio" type="hidden">
+                <input id="lngFinal" name="lngFinal" type="hidden">
                 <button class="form_button_success">Encontrar conductores</button>
             </form>
         </div>
