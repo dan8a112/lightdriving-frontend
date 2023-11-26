@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Request as Psr7Request;
 
 class ClienteController extends Controller
 {
@@ -17,6 +16,15 @@ class ClienteController extends Controller
         return view('registroCliente');
     }
 
+    public function principal_view($cliente){
+        return view('principalCliente', compact('cliente'));
+    }
+
+    public function carrera_view(){
+        return view('crearCarrera');
+    }
+
+    //Envio de formulario de registro de cliente
     public function crear(Request $request){
         try{
             $client = new Client();
@@ -48,6 +56,7 @@ class ClienteController extends Controller
         }
     }
 
+    //Envio de formulario de login de cliente
     public function autenticar(Request $request){
         try {
             
@@ -67,9 +76,9 @@ class ClienteController extends Controller
                 'body' => $body
             ]);
 
-            $cliente = $response->getBody();
+            $cliente = json_decode($response->getBody());
 
-            return $response->getBody();
+            return view('principalCliente', compact('cliente'));
 
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();

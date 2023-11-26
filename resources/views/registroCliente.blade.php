@@ -78,6 +78,6 @@
                 <img class="footer_social" src={{asset('../resources/img/social.svg')}} alt="">
             </div>
         </footer>
-        <script src={{asset('../resources/js/maps.js')}}></script>
+        <script src={{asset('../resources/js/registerMap.js')}}></script>
     </body>
 </html>
