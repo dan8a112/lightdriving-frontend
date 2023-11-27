@@ -41,12 +41,14 @@
                 <input id="destino" class="input_carrera" type="text" placeholder="Destino" readonly>
             </section>
             
-            <form action="">
+            <form id="formularioBusqueda" method="POST" action={{route('cliente.buscarUber')}}>
+                @csrf
+                @method('POST')
                 <input id="latInicio" name="latInicio" type="hidden">
                 <input id="latFinal" name="latFinal"type="hidden">
                 <input id="lngInicio" name="lngInicio" type="hidden">
                 <input id="lngFinal" name="lngFinal" type="hidden">
-                <button class="form_button_success">Encontrar conductores</button>
+                <button id="buscarUbers_button" class="form_button_success">Encontrar conductores</button>
             </form>
         </div>
 

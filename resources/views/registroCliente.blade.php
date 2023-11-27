@@ -39,18 +39,18 @@
             @method('POST')
 
             <div class="form_container">
-                <label class="form_label" for="nombre">Nombre</label>
-                <input class="form_input" type="text" name="nombre">
+                <label class="form_label" for="nombre" >Nombre</label>
+                <input class="form_input" type="text" name="nombre" required>
                 <label class="form_label" for="nombre">Apellido</label>
-                <input class="form_input" type="text" name="apellido">
+                <input class="form_input" type="text" name="apellido" required>
                 <label class="form_label" for="correo">Correo electronico</label>
-                <input class="form_input" type="email" name="correo">
+                <input class="form_input" type="email" name="correo" required>
                 <label class="form_label" for="contrasena">Contraseña</label>
-                <input class="form_input" type="password" name="contrasena">
+                <input class="form_input" type="password" name="contrasena" required>
                 <label class="form_label" for="telefono">Telefono</label>
-                <input class="form_input" type="tel" name="telefono">
+                <input class="form_input" type="tel" name="telefono" required>
                 <label class="form_label" for="fechaNacimiento">Fecha de nacimiento</label>
-                <input class="form_input" type="date" name="fechaNacimiento">
+                <input class="form_input" type="date" name="fechaNacimiento" required>
             </div>
             <div class="form_map">
                 <label class="form_label">Ubicacion Actual</label>

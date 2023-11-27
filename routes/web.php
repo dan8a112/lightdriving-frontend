@@ -36,6 +36,8 @@ Route::get('/cliente/main', [ClienteController::class, 'principal_view'])->name(
 
 Route::get('/cliente/carrera', [ClienteController::class, 'carrera_view'])->name('cliente.carrera');
 
+Route::post('/cliente/uberCercanos', [ClienteController::class, 'buscarUbersCercanos'])->name('cliente.buscarUber');
+
 //Rutas de Conductor
 
 //CONDUCTOR

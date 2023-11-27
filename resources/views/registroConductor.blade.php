@@ -50,7 +50,7 @@
         </form>
         <div class="description_container">
             <p class="description_text">¿Ya tienes una cuenta?</p>
-            <a href="{{route('conductor.login')}}"><b>Inicia Sesion</b></a>
+            <a href={{route('conductor.login')}}><b>Inicia Sesion</b></a>
             
         </div>
         <footer>

@@ -81,6 +81,16 @@
     width: 100%;
 }
 
+.visual_container{
+    display: flex;
+    justify-content: center;
+}
+
+.visual_container>img{
+    width: auto;
+    height: 200px;
+}
+
 #map{
     height: 200px;
 }

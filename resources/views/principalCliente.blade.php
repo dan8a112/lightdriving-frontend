@@ -31,19 +31,20 @@
         
         <p class="historial_title">Historial</p>
         <div class="historial_container">
-            @foreach ($cliente->carreras as $carrera)
+            @foreach ($cliente->facturas as $factura)
             <div class="historial_card">
                 <section class="info_container">
                     <img class="icon_car" src={{asset('../resources/img/carrera.png')}} alt="icono auto">
                     <div class="historial_info">
-                        <span class="date_card">{{$carrera->factura->fecha}}</span>
-                        <span>{{$carrera->factura->total}}</span>
-                        <span>{{}}</span><!--Falta mostrar el metodo de pago!--> 
+                        <!--Falta mostrar el id de la carrera!--> 
+                        <span class="date_card">{{$factura->fecha}}</span>
+                        <span>{{$factura->total}}</span>
+                        <span>{{$factura->metodoPago}}</span>
                     </div>    
                 </section>
                 <div class="historial_mas">
                     <a href="">Ver detalle</a>
-                    <p class="carrera_estado">EN PROCESO</p>
+                    <p class="carrera_estado">{{$factura->estadoCarrera}}</p>
                 </div>
             </div>
             @endforeach

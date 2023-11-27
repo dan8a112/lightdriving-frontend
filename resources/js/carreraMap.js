@@ -83,4 +83,25 @@ async function getAdress(latlng){
     });
 }
 
+function buscarUbers(){
+
+    fetch('/lightdriving-frontend/public/cliente/uberCercanos')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    }).catch(error => {
+        console.error('Error en la petición:', error);
+    });
+
+}
+
+let botonBuscarUber = document.getElementById('buscarUbers_button');
+
+let formularioBusqueda = document.getElementById('formularioBusqueda');
+
+formularioBusqueda.addEventListener('submit', function (event) {
+    event.preventDefault();
+    buscarUbers();
+});
+
 initMap();

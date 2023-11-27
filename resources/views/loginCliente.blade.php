@@ -44,7 +44,8 @@
             <p class="description_text">¿No tienes una cuenta?</p>
             <a class="text_link" href=""><b>Registrate</b></a>
         </div>
-        <div class="final_container">
+        <div class="visual_container">
+            <img src={{asset('../resources/img/cliente_visual.png')}} alt="">
         </div>
         <footer>
             <div class="footer_container">

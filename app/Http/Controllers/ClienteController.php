@@ -86,5 +86,33 @@ class ClienteController extends Controller
         }
     }
 
+    public function buscarUbersCercanos(Request $request){
+        try {
+            
+            $client = new Client();
+
+            $headers = [
+                'Content-Type' => 'application/json'
+            ];
+
+            $body = '{
+                "lat": "'.$request->input('latInicio').'",
+                "lng": "'.$request->input('lngInicio').'"
+            }';
+
+            $response = $client->get('localhost:8080/api/uber/ubersCercanos', [
+                'headers'=> $headers,
+                'body' => $body
+            ]);
+
+            $ubers = json_decode($response->getBody());
+
+            return $ubers;
+
+        } catch (RequestException $e) {
+            return 'Error al realizar la solicitud'.$e->getMessage();
+        }
+    }
+
     
 }
