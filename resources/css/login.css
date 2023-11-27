@@ -49,6 +49,7 @@
     background-color: #7F7F7F;
     padding: 12px;
     margin-left: 20px;
+    text-decoration: none;
 }
 
 .description_container{
@@ -71,7 +72,7 @@
     justify-content: center;
 }
 
-a:link {
+.text_link {
     text-decoration: none;
     color: #030303;
 }

@@ -33,16 +33,16 @@
                 <label class="form_label" for="correo">Correo electronico</label>
                 <input class="form_input" type="text" name="correo">
                 <label class="form_label" for="contrasena">Contraseña</label>
-                <input class="form_input" type="text" name="contrasena">
+                <input class="form_input" type="password" name="contrasena">
             </div>
             <div class="button_container">
                 <button class="form_button_success">Iniciar sesion</button>
-                <button class="form_button_back">Volver</button>
+                <a href={{route('home')}} class="form_button_back">Volver</a>
             </div>
         </form>
         <div class="description_container">
             <p class="description_text">¿No tienes una cuenta?</p>
-            <a href=""><b>Registrate</b></a>
+            <a class="text_link" href=""><b>Registrate</b></a>
         </div>
         <div class="final_container">
         </div>

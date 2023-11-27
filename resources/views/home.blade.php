@@ -46,7 +46,7 @@
     <footer>
         <div class="footer_container">
             <h3 class="footer_text">LightDriving</h3>
-            <img class="footer_social" src={{asset("../resources/img/banner.png")}}"../resources/img/social.svg" alt="">
+            <img class="footer_social" src={{asset("../resources/img/social.svg")}} alt="">
         </div>
     </footer>
 </html>

@@ -69,7 +69,7 @@
         
         <div class="description_container">
             <p class="description_text">¿Ya tienes una cuenta?</p>
-            <a href={{route('cliente.login')}}><b>Inicia Sesion</b></a>
+            <a  class="text_link" href={{route('cliente.login')}}><b>Inicia Sesion</b></a>
         </div>
         
         <footer>
