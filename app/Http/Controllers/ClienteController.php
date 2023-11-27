@@ -78,6 +78,7 @@ class ClienteController extends Controller
 
             $cliente = json_decode($response->getBody());
 
+
             return view('principalCliente', compact('cliente'));
 
         } catch (RequestException $e) {

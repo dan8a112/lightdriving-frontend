@@ -36,9 +36,9 @@
                 <section class="info_container">
                     <img class="icon_car" src={{asset('../resources/img/carrera.png')}} alt="icono auto">
                     <div class="historial_info">
-                        <span class="date_card">2023-09-10</span>
-                        <span>HNL 120</span>
-                        <span>Efectivo</span>
+                        <span class="date_card">{{$carrera->factura->fecha}}</span>
+                        <span>{{$carrera->factura->total}}</span>
+                        <span>{{}}</span><!--Falta mostrar el metodo de pago!--> 
                     </div>    
                 </section>
                 <div class="historial_mas">
