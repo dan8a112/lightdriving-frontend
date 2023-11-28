@@ -1,8 +1,9 @@
 body{
     background-color: #F2F0F2;
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
 .header_container{
@@ -53,6 +54,10 @@ body{
     font-weight: 600;
     margin-top: 45px;
     height: 40px;
+}
+
+footer{
+    text-align: center;
 }
 
 .footer_text{

@@ -20,8 +20,8 @@ class ClienteController extends Controller
         return view('principalCliente', compact('cliente'));
     }
 
-    public function carrera_view(){
-        return view('crearCarrera');
+    public function carrera_view($id){
+        return view('crearCarrera', compact('id'));
     }
 
     //Envio de formulario de registro de cliente
@@ -86,6 +86,9 @@ class ClienteController extends Controller
         }
     }
 
+    /**
+     * Funcion que verifica si la ruta no esta en una zona restringida y busca los ubers cercanos
+     */
     public function buscarUbersCercanos(Request $request){
         try {
             
@@ -97,7 +100,9 @@ class ClienteController extends Controller
 
             $body = '{
                 "lat": "'.$request->input('latInicio').'",
-                "lng": "'.$request->input('lngInicio').'"
+                "lng": "'.$request->input('lngInicio').'",
+                "lng": "'.$request->input('latFinal').'",
+                "lng": "'.$request->input('lngFinal').'"
             }';
 
             $response = $client->get('localhost:8080/api/uber/ubersCercanos', [
@@ -105,9 +110,14 @@ class ClienteController extends Controller
                 'body' => $body
             ]);
 
-            $ubers = json_decode($response->getBody());
+            $uberResponse = json_decode($response->getBody());
 
-            return $ubers;
+
+            if($uberResponse->exito){
+                return $uberResponse;
+            }else{
+               return $uberResponse->mensaje;
+            }
 
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();

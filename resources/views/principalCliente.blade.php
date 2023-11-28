@@ -48,7 +48,7 @@
                 </div>
             </div>
             @endforeach
-            <a href={{route('cliente.carrera')}} class="add_button"><img src={{asset('../resources/img/mas.png')}}  alt="mas icon"></a>
+            <a href={{route('cliente.carrera', $cliente->id)}} class="add_button"><img src={{asset('../resources/img/mas.png')}}  alt="mas icon"></a>
         </div>
         <footer>
             <div class="footer_container">

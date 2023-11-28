@@ -1,5 +1,7 @@
 let map;
 
+let uberMarkers =[];
+
 async function initMap(){
 
     const { Map } = await google.maps.importLibrary("maps");
@@ -67,6 +69,11 @@ async function initMap(){
 
 }
 
+/**
+ * Obtiene el nombre de una ubicacion mediante sus coordenadas
+ * @param {*} latlng 
+ * @returns 
+ */
 async function getAdress(latlng){
     const {Geocoder} = await google.maps.importLibrary("geocoding");
 
@@ -83,24 +90,106 @@ async function getAdress(latlng){
     });
 }
 
+/**
+ * Hace una peticion AJAX a la ruta buscarUbersCercanos
+ */
 function buscarUbers(){
 
-    fetch('/lightdriving-frontend/public/cliente/uberCercanos')
+    let formularioBusqueda = document.getElementById('formularioBusqueda');
+
+    let formData = new FormData(formularioBusqueda);
+
+    console.log(formData);
+
+    fetch('/lightdriving-frontend/public/cliente/uberCercanos', {
+        method: 'POST',
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: formData
+    })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        if(data.exito!=null){ //Si existe la llave exito, no se encuentra en zona restringida
+            console.log(data);
+            generarUberMarkers(data.ubers);
+        }else{
+            alert(data.mensaje);
+        }
     }).catch(error => {
         console.error('Error en la petición:', error);
     });
 
 }
 
+function generarUberMarkers(ubers){
+
+    limpiarMarcadores();
+
+    for(let uber of ubers){
+
+        let lat = uber.lat;
+        let lng = uber.lng;
+
+        const coordUber = {lat, lng};
+
+        let iconPath;
+
+        if(uber.tipoUber.idTipoUber == 1){
+            iconPath = "../../../resources/img/uberPremium.png";
+        }else{
+            iconPath = "../../../resources/img/uberStandard.png"
+        }
+
+        uberMarker = new google.maps.Marker({
+            position: coordUber,
+            map,
+            icon: iconPath,
+        });
+
+        uberMarker.addListener('click', (event)=>{
+
+            let modalUber = new bootstrap.Modal('#carreraModal')
+            modalUber.show();
+
+            let nombreApellido = document.getElementById('nombreApellido');
+            let marcaColor = document.getElementById('marcaColor');
+            let placaUber = document.getElementById('placaUber');
+            let telUber = document.getElementById('telUber');
+            let tipoUber = document.getElementById('tipoUber');
+            let origenCarrera = document.getElementById('origenCarrera');
+            let destinoCarrera = document.getElementById('destinoCarrera');
+            let totalPagar = document.getElementById('totalPagar');
+
+            nombreApellido.value = `${uber.nombre} ${uber.apellido}`;
+            marcaColor.value = `${uber.marca}, ${uber.color}`;
+            placaUber.value = `Placa No. ${uber.placa}`;
+            telUber.value = `Telefono ${uber.telefono}`;
+
+            tipoUber.value = uber.tipoUber.descripcion;
+            origenCarrera.value = document.getElementById("origen").value;
+            destinoCarrera.value = document.getElementById("destino").value;
+
+            totalPagar.value = uber.total;
+        })
+
+        uberMarkers.push(uberMarker);
+
+    }
+}
+
+function limpiarMarcadores(){
+    for (let i = 0; i < uberMarkers.length; i++) {
+        // Elimina cada marcador del mapa
+        uberMarkers[i].setMap(null);
+      }
+      // Limpia el array de marcadores
+      uberMarkers = [];
+}
+
+//Boton de buscaUber
 let botonBuscarUber = document.getElementById('buscarUbers_button');
-
-let formularioBusqueda = document.getElementById('formularioBusqueda');
-
-formularioBusqueda.addEventListener('submit', function (event) {
-    event.preventDefault();
+botonBuscarUber.addEventListener('click', function (event) {
     buscarUbers();
 });
 

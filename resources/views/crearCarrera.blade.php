@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href={{asset('../resources/css/app.css')}}>
     <link rel="stylesheet" href={{asset('../resources/css/carrera.css')}}>
     <script>
@@ -41,18 +42,65 @@
                 <input id="destino" class="input_carrera" type="text" placeholder="Destino" readonly>
             </section>
             
-            <form id="formularioBusqueda" method="POST" action={{route('cliente.buscarUber')}}>
+            <form id="formularioBusqueda" method="POST">
                 @csrf
                 @method('POST')
                 <input id="latInicio" name="latInicio" type="hidden">
                 <input id="latFinal" name="latFinal"type="hidden">
                 <input id="lngInicio" name="lngInicio" type="hidden">
                 <input id="lngFinal" name="lngFinal" type="hidden">
-                <button id="buscarUbers_button" class="form_button_success">Encontrar conductores</button>
+                <button type="button" id="buscarUbers_button" class="form_button_success">Encontrar conductores</button>
             </form>
         </div>
 
-        <script src={{asset('../resources/js/carreraMap.js')}}></script>
+        <div class="modal fade" id="carreraModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="main_text">Confirma tu carrera</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
+                  <div class="ubercard_container">
+                    <img class="uber_img" src={{asset('../resources/img/uberProfile.png')}} alt="">
+                    <div class="uberinfo_container">
+                      <span id="nombreApellido" class="text_name">Carlos Ochoa</span>
+                      <span id="marcaColor" class="text_info">Honda Civic, Blanco</span>
+                      <span id="placaUber" class="text_info">Placa: HDO-2304</span>
+                      <span id="telUber" class="text_info">Tel: 94832396</span>
+                    </div>
+                  </div>
+
+                  <div class="serviceinfo_container">
+                    <p>Tipo uber <br><strong id="tipoUber">Standard</strong></p>
+                    <p>Origen <br><strong id="origenCarrera">Universidad Nacional Autonoma de Honduras (UNAH)</strong></p>
+                    <p>Destino <br><strong id="destinoCarrera">D1, Tegucigalpa</strong></p>
+                  </div>
+
+                  <div class="select_container">
+                    <p>Metodo de pago</p>
+                    <select name="metodoPago" id="metodoPago_select">
+                      <option value="1">Efectivo</option>
+                      <option value="2">Transferencia</option>
+                    </select>
+                  </div>
+
+                  <div class="total_container">
+                    <span class="text_total">Total a pagar</span>
+                    <span class="total" id="totalPagar">L. 120</span>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+          
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src={{asset('../resources/js/carreraMap.js')}}></script>
     </body>
 </html>
