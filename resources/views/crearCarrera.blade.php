@@ -51,6 +51,7 @@
                 <input id="lngFinal" name="lngFinal" type="hidden">
                 <button type="button" id="buscarUbers_button" class="form_button_success">Encontrar conductores</button>
             </form>
+            
         </div>
 
         <div class="modal fade" id="carreraModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,8 +94,8 @@
 
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary"></button>
                 </div>
               </div>
             </div>

@@ -122,9 +122,15 @@ function buscarUbers(){
 
 }
 
+
+/**
+ * Genera los marcadores de los ubers
+ * @param {*} ubers 
+ */
 function generarUberMarkers(ubers){
 
     limpiarMarcadores();
+
 
     for(let uber of ubers){
 
@@ -161,20 +167,18 @@ function generarUberMarkers(ubers){
             let destinoCarrera = document.getElementById('destinoCarrera');
             let totalPagar = document.getElementById('totalPagar');
 
-            nombreApellido.value = `${uber.nombre} ${uber.apellido}`;
-            marcaColor.value = `${uber.marca}, ${uber.color}`;
-            placaUber.value = `Placa No. ${uber.placa}`;
-            telUber.value = `Telefono ${uber.telefono}`;
+            nombreApellido.textContent = `${uber.nombre} ${uber.apellido}`;
+            marcaColor.textContent = `${uber.marca}, ${uber.color}`;
+            placaUber.textContent = `Placa No. ${uber.placa}`;
+            telUber.textContent = `Telefono ${uber.telefono}`;
 
-            tipoUber.value = uber.tipoUber.descripcion;
-            origenCarrera.value = document.getElementById("origen").value;
-            destinoCarrera.value = document.getElementById("destino").value;
+            tipoUber.textContent = uber.tipoUber.descripcion;
+            origenCarrera.textContent = document.getElementById("origen").value;
+            destinoCarrera.textContent = document.getElementById("destino").value;
 
-            totalPagar.value = uber.total;
+            totalPagar.textContent = `L. ${uber.total}`;
         })
-
         uberMarkers.push(uberMarker);
-
     }
 }
 
