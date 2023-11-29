@@ -1,3 +1,7 @@
+body{
+    position: relative;
+}
+
 .description_container{
     font-size: 1.125rem;
     color: #030303;
@@ -19,7 +23,7 @@
     align-items: center;
     background-color: #E5E5E5;
     height: 50vh;
-    position: relative;
+    overflow: auto;
 }
 
 .historial_card{
@@ -32,6 +36,7 @@
     width: 90%;
     height: 85px;
     margin: 10px;
+    padding: 10px;
 }
 
 .date_card{
@@ -44,14 +49,15 @@
     display: flex;
     justify-content: space-between;
     margin-left: 10px;
-    width: 40%;
+    width: 60%;
 }
 
 .historial_info{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    color: #032A2F;
+    color: #424242;
+    width: 50%;
     height: 60px;
     font-weight: 600;
     font-size: 0.75rem;
@@ -65,17 +71,19 @@
     margin-right: 20px;
 }
 
-.historial_mas>button{
+.historial_mas>a{
+    text-decoration: none;
     background-color: #032A2F;
     padding: 10px;
     border-radius: 5px;
     font-weight: 500;
+    font-size: 0.75rem;
     color: #C2C2C2;
     border: none;
 }
 
 .historial_mas>p{
-    color: #FF9500;
+    color:  #28b463 ;
     font-weight: 600;
     font-size: 0.75rem;
 }
@@ -83,13 +91,13 @@
 .add_button{
     position: absolute;
     display: flex;
-    bottom: 20px;
+    bottom: 100px;
     right: 20px;
     background-color: #5EBC39;
     border-radius: 100%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     transition: 0.5s;
 }
 
