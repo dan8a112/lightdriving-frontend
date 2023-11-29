@@ -45,13 +45,15 @@
             <form id="formularioBusqueda" method="POST">
                 @csrf
                 @method('POST')
-                <input id="latInicio" name="latInicio" type="hidden">
+                <input id="idUsuario" name="idCliente" type="hidden" value={{$id}}>
+                <input id="idConductor" name="idConductor" type="hidden">
+                <input id="latInicio" name="latInicio"type="hidden">
                 <input id="latFinal" name="latFinal"type="hidden">
                 <input id="lngInicio" name="lngInicio" type="hidden">
                 <input id="lngFinal" name="lngFinal" type="hidden">
                 <button type="button" id="buscarUbers_button" class="form_button_success">Encontrar conductores</button>
             </form>
-            
+
         </div>
 
         <div class="modal fade" id="carreraModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -81,7 +83,7 @@
 
                   <div class="select_container">
                     <p>Metodo de pago</p>
-                    <select name="metodoPago" id="metodoPago_select">
+                    <select name="metodoPago" id="metodoPago_select" required>
                       <option value="1">Efectivo</option>
                       <option value="2">Transferencia</option>
                     </select>
@@ -95,7 +97,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-primary"></button>
+                  <button id="crearCarrera-button" type="button" class="btn btn-primary">confirmar Carrera</button>
                 </div>
               </div>
             </div>
