@@ -32,11 +32,14 @@ Route::post('/cliente/crear', [ClienteController::class, 'crear'])->name('client
 
 Route::post('/cliente/autenticar', [ClienteController::class, 'autenticar'])->name('cliente.auth');
 
-Route::get('/cliente/main', [ClienteController::class, 'principal_view'])->name('cliente.principal');
+Route::get('/cliente/main/{id}', [ClienteController::class, 'principal_view'])->name('cliente.principal');
 
 Route::get('/cliente/carrera/{id}', [ClienteController::class, 'carrera_view'])->name('cliente.carrera');
 
 Route::post('/cliente/uberCercanos', [ClienteController::class, 'buscarUbersCercanos'])->name('cliente.buscarUber');
+
+Route::post('/cliente/crearCarrera', [ClienteController::class, 'crearCarrera'])->name('cliente.crearCarrera');
+
 
 
 //Rutas de Conductor

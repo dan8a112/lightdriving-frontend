@@ -28,8 +28,12 @@
         <div class="description_container">
             <p class="description_text">¿A donde deseeas ir hoy?</p>
         </div>
-        
-        <p class="historial_title">Historial</p>
+
+        <a href={{route('cliente.carrera', $cliente->id)}} id="add_button" class="add_button">
+            <img src={{asset('../resources/img/mas.png')}}  alt="mas icon">
+        </a>
+
+        <p class="historial_title">Tus viajes</p>
         <div class="historial_container">
             @foreach ($cliente->facturas as $factura)
             <div class="historial_card">
@@ -38,17 +42,24 @@
                     <div class="historial_info">
                         <!--Falta mostrar el id de la carrera!--> 
                         <span class="date_card">{{$factura->fecha}}</span>
-                        <span>{{$factura->total}}</span>
-                        <span>{{$factura->metodoPago}}</span>
+                        <span>Total: {{$factura->total}}</span>
+                        <span>Metodo: {{$factura->metodoPago}}</span>
                     </div>    
                 </section>
                 <div class="historial_mas">
                     <a href="">Ver detalle</a>
-                    <p class="carrera_estado">{{$factura->estadoCarrera}}</p>
+                    <p class="carrera_estado" id={{$factura->idFactura}}>{{$factura->estadoCarrera}}</p>
                 </div>
             </div>
+            @if ($factura->estadoCarrera=='En progreso')
+            <script>
+                document.getElementById({{$factura->idFactura}}).style.color="#d35400"
+                document.getElementById('add_button').href="#"
+                document.getElementById('add_button').style.backgroundColor = "#424242"
+                document.getElementById('add_button').addEventListener('click',()=>alert('Debes completar las carreras pendientes'))
+            </script> 
+            @endif
             @endforeach
-            <a href={{route('cliente.carrera', $cliente->id)}} class="add_button"><img src={{asset('../resources/img/mas.png')}}  alt="mas icon"></a>
         </div>
         <footer>
             <div class="footer_container">
