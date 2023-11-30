@@ -158,9 +158,6 @@ function generarUberMarkers(ubers){
             let modalUber = new bootstrap.Modal('#carreraModal')
             modalUber.show();
 
-            let idConductor = document.getElementById('idConductor'); //Input oculto idConductor
-            idConductor.value = uber.idConductor;
-
             let nombreApellido = document.getElementById('nombreApellido');
             let marcaColor = document.getElementById('marcaColor');
             let placaUber = document.getElementById('placaUber');
@@ -169,7 +166,6 @@ function generarUberMarkers(ubers){
             let origenCarrera = document.getElementById('origenCarrera');
             let destinoCarrera = document.getElementById('destinoCarrera');
             let totalPagar = document.getElementById('totalPagar');
-            
 
             nombreApellido.textContent = `${uber.nombre} ${uber.apellido}`;
             marcaColor.textContent = `${uber.marca}, ${uber.color}`;
@@ -181,49 +177,10 @@ function generarUberMarkers(ubers){
             destinoCarrera.textContent = document.getElementById("destino").value;
 
             totalPagar.textContent = `L. ${uber.total}`;
-
         })
         uberMarkers.push(uberMarker);
     }
 }
-
-/**
- * Hace una peticion AJAX a la ruta de crear facturas
- */
-function crearCarrera(){
-
-    let formularioBusqueda = document.getElementById('formularioBusqueda');
-
-    let formData = new FormData(formularioBusqueda);
-
-    let idMetodoPago = document.getElementById('metodoPago_select');
-    let ubicacionInicial = document.getElementById('origen').value;
-    let ubicacionFinal = document.getElementById('destino').value;
-
-    formData.append("idMetodoPago",idMetodoPago.value);
-    formData.append("ubicacionInicial", ubicacionInicial);
-    formData.append("ubicacionFinal", ubicacionFinal);
-
-    fetch('/lightdriving-frontend/public/cliente/crearCarrera', {
-        method: 'POST',
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: formData
-    }).then(response=>response.json())
-    .then(data => {
-        console.log(data.state);
-        if(data.state){
-            window.location.href = '/lightdriving-frontend/public/cliente/main/' + data.id;
-        }else{
-            alert('No se pudo crear la carrera, intentelo de nuevo');
-        }
-    })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-    });
-    
-} 
 
 function limpiarMarcadores(){
     for (let i = 0; i < uberMarkers.length; i++) {
@@ -238,12 +195,6 @@ function limpiarMarcadores(){
 let botonBuscarUber = document.getElementById('buscarUbers_button');
 botonBuscarUber.addEventListener('click', function (event) {
     buscarUbers();
-});
-
-//Boton de crear carrera
-let botonCrearCarrera = document.getElementById('crearCarrera-button');
-botonCrearCarrera.addEventListener('click', function (event) {
-    crearCarrera();
 });
 
 initMap();

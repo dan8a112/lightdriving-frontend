@@ -11,32 +11,30 @@ class UberController extends Controller
         return view('registroUber');
     }
 
-    public function crear(Request $request){
-        try{
-            $client = new Client();
 
-            $headers = [
-                'Content-Type' => 'application/json'
-            ];
-    
-            $body = '{
-                "marca": "'.$request->input('marca').'",
-                "color": "'.$request->input('color').'",
-                "placa": "'.$request->input('placa').'",
-                "anio": "'.$request->input('anio').'",
-            }';
-    
-            $response = $client->post('localhost:8080/api/uber/crear', [
-                'headers'=> $headers,
-                'body' => $body
-            ]);
+    public function obtenerTiposUber(){
+        try {
+            $url = 'http://localhost:8080/api/tipoUber/obtener/todos';
+            $response = file_get_contents($url);
 
-            return redirect(route('home'));
+            if ($response === false) {
+                // Manejar el error, lanzar una excepción, o realizar alguna acción específica.
+                throw new Exception("Error al obtener los tipos de Uber.");
+            }
 
-        }catch(RequestException $e){
+            // Decodificar el JSON obtenido
+            $tiposUber = json_decode($response, true);
 
-            return 'Error al realizar la solicitud'.$e->getMessage();
+            // Puedes pasar los tipos de Uber a la vista
+            return view('registroConductor', compact("tiposUber"));
 
+        } catch (Exception $e) {
+            // Manejar la excepción, por ejemplo, redirigir a una página de error.
+            return view('error', ['message' => $e->getMessage()]);
         }
     }
+
+   public function probando(){
+    return view('probando');
+   }
 }

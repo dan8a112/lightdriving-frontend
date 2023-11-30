@@ -16,7 +16,7 @@
     <body>
         <header>
             <div class="header_container">
-                <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
+                <img class="icon" src={{asset('img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
             </div>
         </header>
@@ -30,21 +30,23 @@
             @csrf
             @method('POST')
             <div class="form_container">
-                <label class="form_label" for="correo" >Correo electronico</label>
+                <label class="form_label" for="correo">Correo electronico</label>
                 <input class="form_input" type="text" name="correo">
-                <label class="form_label" for="password">Contraseña</label>
-                <input class="form_input" type="password" name="password">
+                <label class="form_label" for="contrasena">Contraseña</label>
+                <input class="form_input" type="password" name="contrasena">
             </div>
             <div class="button_container">
                 <button class="form_button_success" type="submit">Iniciar sesion</button>
-                <a href="{{route('home')}}" class="form_button_back">Volver</a>
+                <a href={{route('home')}} class="form_button_back">Volver</a>
             </div>
         </form>
         <div class="description_container">
             <p class="description_text">¿No tienes una cuenta?</p>
-            <a href="{{route('conductor.register')}}"><b>Registrate</b></a>
+            <a class="text_link" href="{{route('conductor.register')}}"><b>Registrate</b></a>
         </div>
-        
+        <div class="visual_container">
+            <img src={{asset('../resources/img/cliente_visual.png')}} alt="">
+        </div>
         <footer>
             <div class="footer_container">
                 <h3 class="footer_text">LightDriving</h3>

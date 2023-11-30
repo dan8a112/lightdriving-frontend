@@ -44,9 +44,12 @@ Route::post('/cliente/uberCercanos', [ClienteController::class, 'buscarUbersCerc
 //CONDUCTOR
 Route::get('/conductor/login', [ConductorController::class, 'login'])->name('conductor.login');
 Route::post('/conductor/iniciar', [ConductorController::class, 'iniciar'])->name('conductor.iniciar');
-Route::get('/conductor/register', [ConductorController::class, 'register'])->name('conductor.register');
+Route::get('/conductor/register', [UberController::class, 'obtenerTiposUber'])->name('conductor.register');
 Route::post('/conductor/crear', [ConductorController::class, 'crear'])->name('conductor.crear');
 
 //Uber-> Auto
 Route::get('/uber/register', [UberController::class, 'register'])->name('uber.register');
 Route::post('/uber/crear', [UberController::class, 'crear'])->name('uber.crear');
+Route::get('/uber/obtener', [UberController::class, 'obtenerTiposUber'])->name('uber.obtener');
+//Route::get('/uber/p', [UberController::class, 'probando'])->name('uber.prueba');
+
