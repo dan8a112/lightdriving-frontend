@@ -16,10 +16,10 @@
 
     <body>
         <header>
-            <div class="header_container">
+            <a class="header_container" href={{route('home')}}>
                 <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
-            </div>
+            </a>
         </header>
         <div class="main_container">
             <h4 class="main_text">Bienvenido</h4>
@@ -71,7 +71,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    
+                    <p>Viajaste con</p>
                     <div class="ubercard_container">
                         <img class="uber_img" src={{asset('../resources/img/uberProfile.png')}} alt="">
                         <div class="uberinfo_container">

@@ -39,7 +39,7 @@
             @method('POST')
 
             <div class="form_container">
-                <label class="form_label" for="nombre" >Nombre</label>
+                <label class="form_label" for="nombre">Nombre</label>
                 <input class="form_input" type="text" name="nombre" required>
                 <label class="form_label" for="nombre">Apellido</label>
                 <input class="form_input" type="text" name="apellido" required>
@@ -54,6 +54,7 @@
             </div>
             <div class="form_map">
                 <label class="form_label">Ubicacion Actual</label>
+                <input class="form_input" type="text" name="ubicacionNombre" id="ubicacionNombre">
                 <div id="map"></div>
                 <input id="lat" type="hidden" name="lat">
                 <input id="lng" type="hidden" name="lng">

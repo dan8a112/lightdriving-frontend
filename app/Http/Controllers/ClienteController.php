@@ -53,7 +53,10 @@ class ClienteController extends Controller
                 "correo": "'.$request->input('correo').'",
                 "contrasena": "'.$request->input('contrasena').'",
                 "telefono": "'.$request->input('telefono').'",
-                "fechaNacimiento": "'.$request->input('fechaNacimiento').'"
+                "fechaNacimiento": "'.$request->input('fechaNacimiento').'",
+                "lat": "'.$request->input('lat').'",
+                "lng": "'.$request->input('lng').'",
+                "ubicacionNombre": "'.$request->input('ubicacionNombre').'"
             }';
     
             $response = $client->post('localhost:8080/api/cliente/crear', [

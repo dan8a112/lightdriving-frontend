@@ -1,6 +1,11 @@
 let map;
 const origenInput = document.getElementById('origen');
 const destinoInput = document.getElementById('destino');
+const latInicio = document.getElementById("latInicio");
+const lngInicio = document.getElementById("lngInicio");
+const latFinal = document.getElementById("latFinal");
+const lngFinal = document.getElementById("lngFinal");
+
 let uberMarkers =[];
 
 async function initMap(){
@@ -8,8 +13,8 @@ async function initMap(){
     const { Map } = await google.maps.importLibrary("maps");
     const { Place } = await google.maps.importLibrary("places");
 
-    let origenUsuario = parseFloat(document.getElementById("latInicio").value);
-    let destinoUsuario = parseFloat(document.getElementById("lngInicio").value);
+    let origenUsuario = parseFloat(latInicio.value);
+    let destinoUsuario = parseFloat(lngInicio.value);
 
     const coordsOrigen = {lat: origenUsuario, lng: destinoUsuario};
     const coordsDestino = {lat: 14.0849808, lng:-87.1640323};
@@ -37,27 +42,33 @@ async function initMap(){
 
 
     //Autocompletado de direccion de origen
-    let autocompleteOrigen = new google.maps.places.Autocomplete(origenInput);
+    let autocompleteOrigen = new google.maps.places.Autocomplete(origenInput,{componentRestrictions: { country: "hn" }});
     autocompleteOrigen.addListener('place_changed', ()=>{
         let place = autocompleteOrigen.getPlace();
-        map.setCenter(place.geometry.location);
-        markerOrigen.setPosition(place.geometry.location)
+        let coord = place.geometry.location.toJSON();
+        map.setCenter(coord);
+        markerOrigen.setPosition(coord);
+        lngInicio.value = coord.lat;
+        latInicio.value = coord.lng;
     })
 
     //Autocompletado de direccion de origen
     let autocompleteDestino = new google.maps.places.Autocomplete(destinoInput);
     autocompleteDestino.addListener('place_changed', ()=>{
         let place = autocompleteDestino.getPlace();
-        map.setCenter(place.geometry.location);
-        markerDestino.setPosition(place.geometry.location)
+        let coord = place.geometry.location.toJSON();
+        map.setCenter(coord);
+        markerDestino.setPosition(coord);
+        lngFinal.value = coord.lat;
+        latFinal.value = coord.lng;
     })
 
     //Evento de cambiar direccion
     markerOrigen.addListener('dragend', function(event){
         let latitud = this.getPosition().lat();
         let longitud = this.getPosition().lng();
-        document.getElementById("latInicio").value = latitud;
-        document.getElementById("lngInicio").value = longitud;
+        latInicio.value = latitud;
+        lngInicio.value = longitud;
 
         let latlng = new google.maps.LatLng(latitud,longitud);
 
@@ -77,8 +88,8 @@ async function initMap(){
         let longitud = this.getPosition().lng();
 
         //agrega las coordenadas del marcador a los input no visibles
-        document.getElementById("latFinal").value = this.getPosition().lat();
-        document.getElementById("lngFinal").value = this.getPosition().lng();
+        latFinal.value = this.getPosition().lat();
+        lngFinal.value = this.getPosition().lng();
         
         let latlng = new google.maps.LatLng(latitud,longitud); //Crea objeto latlng
 
