@@ -2,6 +2,10 @@ body{
     position: relative;
 }
 
+.footer_container{
+    height: 70px;
+}
+
 .description_container{
     font-size: 1.125rem;
     color: #030303;
@@ -47,7 +51,7 @@ body{
 
 .info_container{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-left: 10px;
     width: 60%;
 }
@@ -59,8 +63,12 @@ body{
     color: #424242;
     width: 50%;
     height: 60px;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.75rem;
+}
+
+.historial_info>p{
+    margin-bottom: 5px;
 }
 
 .historial_mas{
@@ -71,7 +79,7 @@ body{
     margin-right: 20px;
 }
 
-.historial_mas>a{
+.historial_mas>span{
     text-decoration: none;
     background-color: #032A2F;
     padding: 10px;
@@ -110,4 +118,61 @@ body{
 .icon_car{
     width: 64px;
     height: auto;
+    margin-right: 20px;
+}
+
+/* Estilos de modal*/
+
+.ubercard_container{
+    display: flex;
+    padding: 20px;
+    background-color: #F2F0F2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.uberinfo_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.uber_img{
+    height: 60px;
+    width: auto;
+    margin-right: 40px;
+}
+
+.text_name{ /* Nombre del conductor*/
+    color: #424242;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.text_info{ /* Info del uber*/
+    color: #7F7F7F;
+    font-weight: 400;
+}
+
+.serviceinfo_container{ /* Origen,destino y tipo uber*/
+    margin-bottom: 20px;
+}
+
+.serviceinfo_container>p{ /* Origen,destino y tipo uber*/
+    margin-bottom: 5px;
+}
+
+.total_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.text_total{
+    font-size: 1.125rem;
+    font-weight: 500;
+}
+
+.total{
+    font-size: 1.5rem;
+    font-weight: 600;
 }

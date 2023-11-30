@@ -1,12 +1,17 @@
 let map;
-
+const origenInput = document.getElementById('origen');
+const destinoInput = document.getElementById('destino');
 let uberMarkers =[];
 
 async function initMap(){
 
     const { Map } = await google.maps.importLibrary("maps");
+    const { Place } = await google.maps.importLibrary("places");
 
-    const coordsOrigen = {lat: 14.084745407104492, lng:-87.16206359863281};
+    let origenUsuario = parseFloat(document.getElementById("latInicio").value);
+    let destinoUsuario = parseFloat(document.getElementById("lngInicio").value);
+
+    const coordsOrigen = {lat: origenUsuario, lng: destinoUsuario};
     const coordsDestino = {lat: 14.0849808, lng:-87.1640323};
 
     map = new Map(document.getElementById("map"), {
@@ -18,16 +23,36 @@ async function initMap(){
     markerOrigen = new google.maps.Marker({
         position: coordsOrigen,
         map,
-        draggable: true
+        draggable: true,
+        icon:'../../../resources/img/origenMarker.png'
     });
 
     //Marcador de destino
     markerDestino = new google.maps.Marker({
         position: coordsDestino,
         map,
-        draggable: true
+        draggable: true,
+        icon:'../../../resources/img/destinoMarker.png'
     });
-    
+
+
+    //Autocompletado de direccion de origen
+    let autocompleteOrigen = new google.maps.places.Autocomplete(origenInput);
+    autocompleteOrigen.addListener('place_changed', ()=>{
+        let place = autocompleteOrigen.getPlace();
+        map.setCenter(place.geometry.location);
+        markerOrigen.setPosition(place.geometry.location)
+    })
+
+    //Autocompletado de direccion de origen
+    let autocompleteDestino = new google.maps.places.Autocomplete(destinoInput);
+    autocompleteDestino.addListener('place_changed', ()=>{
+        let place = autocompleteDestino.getPlace();
+        map.setCenter(place.geometry.location);
+        markerDestino.setPosition(place.geometry.location)
+    })
+
+    //Evento de cambiar direccion
     markerOrigen.addListener('dragend', function(event){
         let latitud = this.getPosition().lat();
         let longitud = this.getPosition().lng();
@@ -37,7 +62,7 @@ async function initMap(){
         let latlng = new google.maps.LatLng(latitud,longitud);
 
         getAdress(latlng).then(function(results) {
-            document.getElementById("origen").value = results.formatted_address;
+            origenInput.value = results.formatted_address;
         })
         .catch(function(error) {
             console.error(error);
@@ -59,7 +84,7 @@ async function initMap(){
 
         //Llama la funcion getAdress para obtener la direccion
         getAdress(latlng).then(function(results) {
-            document.getElementById("destino").value = results.formatted_address;
+            destinoInput.value = results.formatted_address;
         })
         .catch(function(error) {
             console.error(error);

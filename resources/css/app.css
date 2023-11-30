@@ -1,8 +1,7 @@
 body{
     background-color: #F2F0F2;
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    position: relative;
+    min-height: 100vh;
 }
 
 .header_container{
