@@ -27,21 +27,47 @@ class ConductorController extends Controller
                 "contrasena": "'.$request->input('contrasena').'"
             }';
 
-            $response = $client->get('localhost:8080/api/conductor/login', [
+            $response = $client->get('http://localhost:8080/api/conductor/login', [
                 'headers'=> $headers,
                 'body' => $body
             ]);
 
-            $conductor = json_decode($response->getBody());
+            $conductorId = json_decode($response->getBody());
 
-
-           return view('conductorPrincipal', compact('conductor'));
+            if($conductorId==-1){
+                return "Error de correo o contraseña";
+            }else{
+                return redirect()->route('conductor.informacion', ['idConductor' => $conductorId]);
+        
+            }
 
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();
         }
     }
 
+    public function obtenerInformacion($idConductor) {
+        try {
+            $client = new Client();
+    
+            // Realiza la solicitud para obtener la información principal utilizando el $idConductor
+            $responseConductor = $client->get("http://localhost:8080/api/conductor/obtnerInfoPaginaPrincipal/".$idConductor);
+    
+            // Verifica si la solicitud fue exitosa
+            if ($responseConductor->getStatusCode() == 200) {
+                $conductor = json_decode($responseConductor->getBody());
+    
+                // Ahora puedes usar la variable $conductor para acceder a la información del conductor
+                return view('conductorPrincipal', compact('conductor'));
+            } else {
+                // Maneja el caso de error de la solicitud de obtener información del conductor
+                return "Error al obtener información del conductor";
+            }
+        } catch (RequestException $e) {
+            return 'Error al realizar la solicitud'.$e->getMessage();
+        }
+    }
+    
 
     public function register(){
         return view('registroConductor');

@@ -49,6 +49,7 @@ Route::get('/conductor/login', [ConductorController::class, 'login'])->name('con
 Route::post('/conductor/iniciar', [ConductorController::class, 'iniciar'])->name('conductor.iniciar');
 Route::get('/conductor/register', [UberController::class, 'obtenerTiposUber'])->name('conductor.register');
 Route::post('/conductor/crear', [ConductorController::class, 'crear'])->name('conductor.crear');
+Route::get('/conductor/informacion/{idConductor}', [ConductorController::class, 'obtenerInformacion'])->name('conductor.informacion');
 
 //Uber-> Auto
 Route::get('/uber/register', [UberController::class, 'register'])->name('uber.register');
