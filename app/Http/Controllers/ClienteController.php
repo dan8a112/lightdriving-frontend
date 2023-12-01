@@ -20,7 +20,7 @@ class ClienteController extends Controller
 
         $client = new Client();
         //Se obtiene la informacion del cliente
-        $response = $client->get('localhost:8080/api/cliente/clienteInformacion/'.$id);
+        $response = $client->get('localhost:8080/api/factura/obtenerFacturas/cliente/'.$id);
 
         $cliente = json_decode($response->getBody());
 
@@ -28,7 +28,14 @@ class ClienteController extends Controller
     }
 
     public function carrera_view($id){
-        return view('crearCarrera', compact('id'));
+
+        $client = new Client();
+        //Se obtiene la informacion del cliente
+        $response = $client->get('localhost:8080/api/cliente/obtenerUbicacion/'.$id);
+
+        $coordenadas = json_decode($response->getBody());
+
+        return view('crearCarrera', compact('id','coordenadas'));
     }
 
     //Envio de formulario de registro de cliente
@@ -46,7 +53,10 @@ class ClienteController extends Controller
                 "correo": "'.$request->input('correo').'",
                 "contrasena": "'.$request->input('contrasena').'",
                 "telefono": "'.$request->input('telefono').'",
-                "fechaNacimiento": "'.$request->input('fechaNacimiento').'"
+                "fechaNacimiento": "'.$request->input('fechaNacimiento').'",
+                "lat": "'.$request->input('lat').'",
+                "lng": "'.$request->input('lng').'",
+                "ubicacionNombre": "'.$request->input('ubicacionNombre').'"
             }';
     
             $response = $client->post('localhost:8080/api/cliente/crear', [
@@ -176,5 +186,17 @@ class ClienteController extends Controller
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();
         }
+    }
+
+    public function obtenerCarrera($id){
+
+        $cliente = new Client();
+
+        $response = $cliente->get('localhost:8080/api/carreras/obtenerDetalleCliente/'.$id);
+        
+        $factura = json_decode($response->getBody());
+
+        return $factura;
+
     }
 }

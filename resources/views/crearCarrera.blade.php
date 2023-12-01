@@ -25,21 +25,22 @@
     <body>
         <header>
             <div class="header_container">
+                <a class="backbutton" href={{route('cliente.principal', $id)}}>Volver</a>
                 <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
             </div>
         </header>
-
+        
         <div id="map" class="map"></div>
-
+        
         <div class="form_container">
             <section class="direccion_container">
                 <img src={{asset('../resources/img/origen.png')}} alt="">
-                <input id="origen" class="input_carrera" type="text" placeholder="Origen" readonly>
+                <input id="origen" class="input_carrera" type="text" placeholder="Origen" value='{{$coordenadas->ubicacionNombre}}'>
             </section>
             <section class="direccion_container">
                 <img src={{asset('../resources/img/destino.png')}} alt="">
-                <input id="destino" class="input_carrera" type="text" placeholder="Destino" readonly>
+                <input id="destino" class="input_carrera" type="text" placeholder="Destino">
             </section>
             
             <form id="formularioBusqueda" method="POST">
@@ -47,9 +48,9 @@
                 @method('POST')
                 <input id="idUsuario" name="idCliente" type="hidden" value={{$id}}>
                 <input id="idConductor" name="idConductor" type="hidden">
-                <input id="latInicio" name="latInicio"type="hidden">
+                <input id="latInicio" name="latInicio"type="hidden" value={{$coordenadas->lat}}>
                 <input id="latFinal" name="latFinal"type="hidden">
-                <input id="lngInicio" name="lngInicio" type="hidden">
+                <input id="lngInicio" name="lngInicio" type="hidden" value={{$coordenadas->lng}}>
                 <input id="lngFinal" name="lngFinal" type="hidden">
                 <button type="button" id="buscarUbers_button" class="form_button_success">Encontrar conductores</button>
             </form>
@@ -91,7 +92,7 @@
 
                   <div class="total_container">
                     <span class="text_total">Total a pagar</span>
-                    <span class="total" id="totalPagar">L. 120</span>
+                    <span class="total" id="totalPagar"></span>
                   </div>
 
                 </div>
@@ -102,7 +103,6 @@
               </div>
             </div>
         </div>
-          
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <script src={{asset('../resources/js/carreraMap.js')}}></script>
     </body>
