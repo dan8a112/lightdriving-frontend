@@ -45,7 +45,7 @@
             <a class="text_link" href="{{route('conductor.register')}}"><b>Registrate</b></a>
         </div>
         <div class="visual_container">
-            <img src={{asset('../resources/img/cliente_visual.png')}} alt="">
+            <img src={{asset('img/cliente_visual.png')}} alt="">
         </div>
         <footer>
             <div class="footer_container">

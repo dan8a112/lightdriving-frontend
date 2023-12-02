@@ -144,6 +144,16 @@ class ConductorController extends Controller
             }
         }
 
-        
+        public function obtenerCarrera($id){
+
+            $cliente = new Client();
+    
+            $response = $cliente->get('http://localhost:8080/api/carreras/obtenerDetalleConductor/'.$id);
+            
+            $factura = json_decode($response->getBody());
+    
+            return $factura;
+    
+        }
         
 }
