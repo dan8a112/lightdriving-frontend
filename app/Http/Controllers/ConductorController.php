@@ -52,7 +52,8 @@ class ConductorController extends Controller
     
             // Realiza la solicitud para obtener la información principal utilizando el $idConductor
             $responseConductor = $client->get("http://localhost:8080/api/conductor/obtnerInfoPaginaPrincipal/".$idConductor);
-    
+            
+            /******************************************** */
             // Verifica si la solicitud fue exitosa
             if ($responseConductor->getStatusCode() == 200) {
                 $conductor = json_decode($responseConductor->getBody());
@@ -68,6 +69,25 @@ class ConductorController extends Controller
         }
     }
     
+    public function terminarCarrera( $idConductor, $idCarrera){
+        try {
+            $client = new Client();
+            $temporalId=$idConductor;
+            // Realiza la solicitud para cambiar el estado de la carrera utilizando el $idConductor
+            $response = $client->put("http://localhost:8080/api/carreras/cambiarEstado/".$idCarrera);
+            
+            // Verifica si la solicitud fue exitosa
+            if ($response->getStatusCode() == 200) {
+                // Redirige directamente a la página de información del conductor
+                return redirect()->route('conductor.informacion', $temporalId);
+            } else {
+                // Maneja el caso de error de la solicitud para cambiar el estado de la carrera
+                return "Error al cambiar el estado de la carrera";
+            }
+        } catch (RequestException $e) {
+            return 'Error al realizar la solicitud: ' . $e->getMessage();
+        }
+    }
 
     public function register(){
         return view('registroConductor');
@@ -123,4 +143,7 @@ class ConductorController extends Controller
                 return 'Error al realizar la solicitud: ' . $e->getMessage();
             }
         }
+
+        
+        
 }

@@ -22,12 +22,40 @@
         </header>
         <div class="main_container">
             <h4 class="main_text">Bienvenido</h4>
-            <h4 class="main_text">{{$conductor->nombre." ".$conductor->apellido}}</h4>
+            <h4 class="main_text">{{$conductor->nombre." ".$conductor->apellido."" }}</h4>
         </div>
        
+        <p class="historial_title">Carrera en Curso</p>
+        
+        <div class="">
+            @if ($conductor->carreraEnProgreso)
+                <div class="historial_card">
+                    <section class="info_container">
+                        <img class="icon_car" src="{{ asset('img/carrera.png') }}" alt="icono auto">
+                            <div class="historial_info">
+                                <!-- Mostrar el id de la carrera en curso -->
+                                <span>Cliente: {{ $conductor->carreraEnProgreso->cliente->nombre }} {{ $conductor->carreraEnProgreso->cliente->apellido }}</span>
+                                <span class="date_card">Fecha: {{ $conductor->carreraEnProgreso->factura->fecha }}</span>
+                                <span>Método: {{ $conductor->carreraEnProgreso->factura->metodoPago->descripcion }}</span>
+                                <span>Total: {{ $conductor->carreraEnProgreso->factura->total }}</span>
+                                
+                                
+                            </div>    
+                    </section>
+                    <div class="historial_mas">
+                        <a href="{{ route('conductor.finalizar', ['idConductor' => $conductor->idConductor, 'idCarrera' => $conductor->carreraEnProgreso->idCarrera]) }}">Finalizar Carrera</a>
+
+                            
+                    </div>
+                </div>
+                    @else
+                        <p>No hay carrera en curso en este momento.</p>
+                    @endif
+        </div>
 
         <p class="historial_title">Tus viajes</p>
         <div class="historial_container">
+           
             @foreach ($conductor->facturas as $factura)
             <div class="historial_card">
                 <section class="info_container">
@@ -37,6 +65,7 @@
                         <span class="date_card">{{$factura->fecha}}</span>
                         <span>Total: {{$factura->total}}</span>
                         <span>Metodo: {{$factura->metodoPago}}</span>
+                        <span>Metodo: {{$factura->carrera}}</span>
                     </div>    
                 </section>
                 <div class="historial_mas">
@@ -53,6 +82,7 @@
             </script> 
             @endif
             @endforeach
+            
         </div>
         <footer>
             <div class="footer_container">

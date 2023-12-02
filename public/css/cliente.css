@@ -30,6 +30,15 @@ body{
     overflow: auto;
 }
 
+.historial_container_conductor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E5E5E5;
+    height: 10vh;
+    overflow: auto;
+}
+
 .historial_card{
     display: flex;
     justify-content: space-between;
