@@ -71,7 +71,7 @@
                     </div>    
                 </section>
                 <div class="historial_mas">
-                    <span class="verDetalle_button" data-factura-id='{{$factura->idFactura}}' href="">Ver detalle</span>
+                    <span class="verDetalle_button" data-factura-id='{{$factura->carrera}}' href="">Ver detalle</span>
                     <p class="carrera_estado" id={{$factura->idFactura}}>{{$factura->estadoCarrera}}</p>
                 </div>
             </div>
