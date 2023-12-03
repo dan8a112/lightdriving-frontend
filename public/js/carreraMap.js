@@ -1,8 +1,10 @@
 let map;
 const origenInput = document.getElementById('origen');
 const destinoInput = document.getElementById('destino');
+
 const latInicio = document.getElementById("latInicio");
 const lngInicio = document.getElementById("lngInicio");
+
 const latFinal = document.getElementById("latFinal");
 const lngFinal = document.getElementById("lngFinal");
 
@@ -13,10 +15,12 @@ async function initMap(){
     const { Map } = await google.maps.importLibrary("maps");
     const { Place } = await google.maps.importLibrary("places");
 
-    let origenUsuario = parseFloat(latInicio.value);
-    let destinoUsuario = parseFloat(lngInicio.value);
+    let inicio = parseFloat(latInicio.value);
+    let final = parseFloat(lngInicio.value);
 
-    const coordsOrigen = {lat: origenUsuario, lng: destinoUsuario};
+    console.log(inicio, final);
+
+    const coordsOrigen = {lat: inicio, lng: final};
     const coordsDestino = {lat: 14.0849808, lng:-87.1640323};
 
     map = new Map(document.getElementById("map"), {
@@ -48,8 +52,8 @@ async function initMap(){
         let coord = place.geometry.location.toJSON();
         map.setCenter(coord);
         markerOrigen.setPosition(coord);
-        lngInicio.value = coord.lat;
-        latInicio.value = coord.lng;
+        latInicio.value = coord.lat;
+        lngInicio.value = coord.lng;
     })
 
     //Autocompletado de direccion de origen
@@ -59,8 +63,8 @@ async function initMap(){
         let coord = place.geometry.location.toJSON();
         map.setCenter(coord);
         markerDestino.setPosition(coord);
-        lngFinal.value = coord.lat;
-        latFinal.value = coord.lng;
+        latFinal.value = coord.lat;
+        lngFinal.value = coord.lng;
     })
 
     //Evento de cambiar direccion
