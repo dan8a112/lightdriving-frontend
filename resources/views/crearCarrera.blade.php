@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href={{asset('../resources/css/reset.css')}}>
+    <link rel="stylesheet" href={{asset('css/reset.css')}}>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href={{asset('../resources/css/app.css')}}>
-    <link rel="stylesheet" href={{asset('../resources/css/carrera.css')}}>
+    <link rel="stylesheet" href={{asset('css/app.css')}}>
+    <link rel="stylesheet" href={{asset('css/carrera.css')}}>
     <script>
         (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
           key: "AIzaSyAGeaSVON3wEOJxYlP6AuVn3i2K5Rz3468",
@@ -26,7 +26,7 @@
         <header>
             <div class="header_container">
                 <a class="backbutton" href={{route('cliente.principal', $id)}}>Volver</a>
-                <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
+                <img class="icon" src={{asset('img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
             </div>
         </header>
@@ -35,11 +35,11 @@
         
         <div class="form_container">
             <section class="direccion_container">
-                <img src={{asset('../resources/img/origen.png')}} alt="">
+                <img src={{asset('img/origen.png')}} alt="">
                 <input id="origen" class="input_carrera" type="text" placeholder="Origen" value='{{$coordenadas->ubicacionNombre}}'>
             </section>
             <section class="direccion_container">
-                <img src={{asset('../resources/img/destino.png')}} alt="">
+                <img src={{asset('img/destino.png')}} alt="">
                 <input id="destino" class="input_carrera" type="text" placeholder="Destino">
             </section>
             
@@ -67,7 +67,7 @@
                 <div class="modal-body">
 
                   <div class="ubercard_container">
-                    <img class="uber_img" src={{asset('../resources/img/uberProfile.png')}} alt="">
+                    <img class="uber_img" src={{asset('img/uberProfile.png')}} alt="">
                     <div class="uberinfo_container">
                       <span id="nombreApellido" class="text_name">Carlos Ochoa</span>
                       <span id="marcaColor" class="text_info">Honda Civic, Blanco</span>
@@ -104,6 +104,6 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        <script src={{asset('../resources/js/carreraMap.js')}}></script>
+        <script src={{asset('js/carreraMap.js')}}></script>
     </body>
 </html>

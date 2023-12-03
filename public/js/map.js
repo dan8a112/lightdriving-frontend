@@ -18,6 +18,7 @@ function initMap() {
         position: argCoords,
         map: map,
         title: "Hello World!",
+        draggable: true
     });
 
     // Se inicia la funcionalidad de autocompletado

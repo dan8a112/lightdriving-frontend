@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href={{asset('../resources/css/reset.css')}}>
+    <link rel="stylesheet" href={{asset('css/reset.css')}}>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={{asset('../resources/css/login.css')}}>
-    <link rel="stylesheet" href={{asset('../resources/css/app.css')}}>
+    <link rel="stylesheet" href={{asset('css/login.css')}}>
+    <link rel="stylesheet" href={{asset('css/app.css')}}>
     <script>
         (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
           key: "AIzaSyAGeaSVON3wEOJxYlP6AuVn3i2K5Rz3468",
@@ -24,7 +24,7 @@
     <body>
         <header>
             <div class="header_container">
-                <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
+                <img class="icon" src={{asset('img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
             </div>
         </header>
@@ -76,9 +76,9 @@
         <footer>
             <div class="footer_container">
                 <h3 class="footer_text">LightDriving</h3>
-                <img class="footer_social" src={{asset('../resources/img/social.svg')}} alt="">
+                <img class="footer_social" src={{asset('img/social.svg')}} alt="">
             </div>
         </footer>
-        <script src={{asset('../resources/js/registerMap.js')}}></script>
+        <script src={{asset('js/registerMap.js')}}></script>
     </body>
 </html>

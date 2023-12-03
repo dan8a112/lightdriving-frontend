@@ -1,14 +1,18 @@
-let map
+let map;
+const latitud = document.getElementById("lat");
+const longitud = document.getElementById("lng");
+
 
 async function initMap(){
 
     const { Map } = await google.maps.importLibrary("maps");
+    const { Place } = await google.maps.importLibrary("places");
 
     const coords = {lat: 14.084745407104492, lng:-87.16206359863281};
 
     map = new Map(document.getElementById("map"), {
         center: coords,
-        zoom: 8,
+        zoom: 15,
       });
 
     marker = new google.maps.Marker({
@@ -18,8 +22,20 @@ async function initMap(){
     });
     
     marker.addListener('dragend', function(event){
-        document.getElementById("lat").value = this.getPosition().lat();
-        document.getElementById("lng").value = this.getPosition().lng();
+        latitud.value = this.getPosition().lat();
+        longitud.value = this.getPosition().lng();
+    })
+
+    const inputNombre = document.getElementById('ubicacionNombre');
+
+    let autocomplete = new google.maps.places.Autocomplete(inputNombre, {componentRestrictions: { country: "hn" }});
+    autocomplete.addListener('place_changed', ()=>{
+        let place = autocomplete.getPlace();
+        let coord = place.geometry.location.toJSON();
+        map.setCenter(coord);
+        marker.setPosition(coord);
+        latitud.value = coord.lat;
+        longitud.value = coord.lng;
     })
 
 }

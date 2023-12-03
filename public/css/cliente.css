@@ -1,9 +1,24 @@
-body{
-    position: relative;
+a{
+    text-decoration: none;
 }
 
-.footer_container{
-    height: 70px;
+.header_container{
+    justify-content: space-between;
+}
+
+.header_logo{
+    display: flex;
+}
+
+.header_profile{
+    display: flex;
+    align-items: center;
+    color: #F2F0F2;
+}
+
+.header_profile>img{
+    width: auto;
+    height: 50px;
 }
 
 .description_container{
@@ -27,15 +42,6 @@ body{
     align-items: center;
     background-color: #E5E5E5;
     height: 50vh;
-    overflow: auto;
-}
-
-.historial_container_conductor{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #E5E5E5;
-    height: 10vh;
     overflow: auto;
 }
 
@@ -90,12 +96,12 @@ body{
 
 .historial_mas>span{
     text-decoration: none;
-    background-color: #032A2F;
+    background-color:   #117864;
     padding: 10px;
     border-radius: 5px;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.75rem;
-    color: #C2C2C2;
+    color: #fff;
     border: none;
 }
 
@@ -128,6 +134,10 @@ body{
     width: 64px;
     height: auto;
     margin-right: 20px;
+}
+
+.footer_container{
+    height: 70px;
 }
 
 /* Estilos de modal*/

@@ -16,20 +16,13 @@
     padding: 8px;
     margin-bottom: 10px;
     font-size: 1rem;
-    border-radius: 10px;
-    border: none;
-    border-bottom: 1px solid #ccc;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .form_input:focus{
     outline: none;
     border-color: #032A2F;
-}
-
-
-.form_map{
-    width: 316px;
-    margin: 20px auto;
 }
 
 .form_button_success{
@@ -42,6 +35,7 @@
 }
 
 .form_button_back{
+    text-decoration: none;
     font-size: 1rem;
     color: #EDE8EF;
     border-radius: 5px;
@@ -49,7 +43,11 @@
     background-color: #7F7F7F;
     padding: 12px;
     margin-left: 20px;
-    text-decoration: none;
+}
+
+.button_container{
+    display: flex;
+    justify-content: center;
 }
 
 .description_container{
@@ -67,18 +65,18 @@
     font-weight: 600;
 }
 
-.button_container{
-    display: flex;
-    justify-content: center;
+.final_container{
+    width: 100%;
+    height: 230px;
+}
+
+.form_img{
+    width: 100%;
 }
 
 .text_link {
     text-decoration: none;
     color: #030303;
-}
-
-.form_img{
-    width: 100%;
 }
 
 .visual_container{
@@ -93,4 +91,9 @@
 
 #map{
     height: 200px;
+}
+
+.form_map{
+    width: 316px;
+    margin: 20px auto;
 }
