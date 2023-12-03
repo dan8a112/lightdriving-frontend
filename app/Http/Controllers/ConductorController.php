@@ -12,6 +12,10 @@ class ConductorController extends Controller
         return view('loginConductor');
     }
 
+    public function profile_view($id){
+        return view('perfilConductor');
+    }
+
     //Envia los parametros de correo y contraseña como objeto request para hacer la validacion del inicia de sesion
     public function iniciar(Request $request){
         try {

@@ -22,6 +22,7 @@
             <div class="header_container">
                 <img class="icon" src={{asset('img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
+                <a href={{route('conductor.verPerfil', $conductor->idConductor)}}>perfil</a>
             </div>
         </header>
         <div class="main_container">
