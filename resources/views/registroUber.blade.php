@@ -29,7 +29,7 @@
 
 
 
-        <form method="POST" action={{route('uber.cambiarAuto',  ['id' => $id]) }}>
+        <form method="POST" action={{route('uber.cambiarAuto',  ['id' => $idU, "idConductor"=>$idC]) }}>
             @csrf
         @method('PUT')         
             <div class="main_container">

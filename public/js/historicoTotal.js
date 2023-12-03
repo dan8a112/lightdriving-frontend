@@ -20,7 +20,9 @@ infoHistorial.addEventListener('click', async (event)=> {
 });
 
 function mostrarTodosHistorial(data) {
-    // Obtener elementos del DOM para mostrar la información
+ 
+
+    //UBER ACTUAL
     let nombreApellido = document.getElementById('nombreApellidoTotal');
     //let uberActual = document.getElementById('uberActualTotal');
     let titulo = document.getElementById('tituloTotal');
@@ -28,19 +30,7 @@ function mostrarTodosHistorial(data) {
     let color = document.getElementById('colorTotal');
     let placa = document.getElementById('placaTotal');
     let anio = document.getElementById('anioTotal');
-    let fechaInicio = document.getElementById('fechaInicioTotal');
-
-   
-    //let uberActual = document.getElementById('uberActualTotal');
-   
-  
-
-    // Mostrar la información en los elementos del DOM
-   
-    
-    //uberActual.textContent = `Uber actual: ${JSON.stringify(data.uberActual)}`;
-   
-
+    let fechaInicio = document.getElementById('fechaInicioTotal');  
 
     nombreApellido.textContent = `Nombre conductor: ${data.nombre} ${data.apellido}`;
     //uberActual.textContent = `Uber actual: ${JSON.stringify(data.uberActual)}`;
@@ -50,6 +40,7 @@ function mostrarTodosHistorial(data) {
     anio.textContent = `Año: ${data.uberActual.anio}`;
     fechaInicio.textContent = `Fecha Inicio: ${data.uberActual.fechaInicio}`;
 
+    //UBER HISTORICO
     let nombreApellidoH = document.getElementById('nombreApellidoTotal');
     //let uberActual = document.getElementById('uberActualTotal');
     let tituloH = document.getElementById('tituloTotal');
@@ -59,11 +50,6 @@ function mostrarTodosHistorial(data) {
     let anioH = document.getElementById('anioHistorial');
     let fechaInicioH = document.getElementById('fechaInicioHistorial');
     let fechaFinalH = document.getElementById('fechaFinalHistorial');
-    
-    
-    
-    
-    
     
     
     nombreApellidoH.textContent = `Nombre conductor: ${data.nombre} ${data.apellido}`;

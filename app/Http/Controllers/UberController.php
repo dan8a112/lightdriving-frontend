@@ -68,13 +68,14 @@ class UberController extends Controller
 
     }
 
-    public function cambiarAuto(Request $request, $idConductor)
+    public function cambiarAuto(Request $request, $idUber, $idConductor)
 {
     try {
         $ubicacion = json_decode($request->input('ubicacion'), true);
 
         $body = 
             [
+                
                 "marca" => $request->input('marca'),
                 "color" => $request->input('color'),
                 "placa" => $request->input('placa'),
@@ -90,7 +91,7 @@ class UberController extends Controller
                 // Inicializa el cliente Guzzle
             $client = new Client();
 
-            $response = $client->put("http://localhost:8080/api/uber/cambiarCarro/".$idConductor, [
+            $response = $client->put("http://localhost:8080/api/uber/cambiarCarro/".$idUber, [
                 'headers' => ['Content-Type' => 'application/json'],
                 'body' => $jsonBody,
             ]);      
@@ -106,9 +107,9 @@ class UberController extends Controller
 
 }
 
-    public function cambiar($idConductor){
-        $id=$idConductor;
-
+    public function cambiar($idUber, $idConductor){
+        $idU=$idUber;
+        $idC=$idConductor;
 
         try {
             $url = 'http://localhost:8080/api/tipoUber/obtener/todos';
@@ -123,7 +124,7 @@ class UberController extends Controller
             $tiposUber = json_decode($response, true);
 
             // Puedes pasar los tipos de Uber a la vista
-            return view('registroUber', compact("tiposUber","id"));
+            return view('registroUber', compact("tiposUber","idU","idC"));
 
         } catch (Exception $e) {
             // Manejar la excepción, por ejemplo, redirigir a una página de error.

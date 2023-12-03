@@ -61,6 +61,6 @@ Route::post('/uber/crear', [UberController::class, 'crear'])->name('uber.crear')
 Route::get('/uber/obtener', [UberController::class, 'obtenerTiposUber'])->name('uber.obtener');
 Route::get('/uber/historico/obtener/{id}', [UberController::class, 'obtenerHistorico'])->name('uber.historico');
 Route::get('/uber/historico/obtener/Todos/{id}', [UberController::class, 'obtenerTodosHistorico'])->name('uber.historicoTotal');
-Route::put('/uber/auto/cambiar/{id}', [UberController::class, 'cambiarAuto'])->name('uber.cambiarAuto');
-Route::get('/uber/autoCambiar/{id}', [UberController::class, 'cambiar'])->name('uber.cambiar');
+Route::put('/uber/auto/cambiar/{id}/{idConductor}', [UberController::class, 'cambiarAuto'])->name('uber.cambiarAuto');
+Route::get('/uber/autoCambiar/{idUber}/{idConductor}', [UberController::class, 'cambiar'])->name('uber.cambiar');
 

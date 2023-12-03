@@ -34,7 +34,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         
                       <li><a class="dropdown-item" id="btn_info" data-bs-toggle="modal" data-bs-target="#info" data-id-Conductor="{{$conductor->idConductor}}" href="">Auto actual</a></li>
-                      <li><a class="dropdown-item" href="{{ route('uber.cambiar', ['id' => $conductor->idConductor]) }}">Cambiar Auto</a></li>
+                      <li><a class="dropdown-item" href="{{ route('uber.cambiar', ['idUber' => $conductor->idUber,'idConductor' => $conductor->idConductor] ) }}">Cambiar Auto</a></li>
                       <li><a class="dropdown-item" id="btn_historial" data-bs-toggle="modal" data-bs-target="#info_historial" data-id-Conducto="{{$conductor->idConductor}}" href="">Historial de autos</a></li>
                     </ul>
                   </div>
