@@ -64,7 +64,7 @@ class ClienteController extends Controller
                 'body' => $body
             ]);
 
-            return redirect(route('home'));
+            return redirect(route('cliente.login'));
 
         }catch(RequestException $e){
 
