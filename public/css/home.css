@@ -57,3 +57,13 @@
     font-weight: 500;
     line-height: 1.25;
 }
+
+.desplegablebtn{
+    background-color: #032A2F;
+}
+
+.desplegable{
+    display: flex;
+    justify-content: end;
+    width: 55%;
+}
