@@ -11,6 +11,7 @@ infoHistorial.addEventListener('click', async (event)=> {
     fetch('/lightdriving-frontend/public/uber/historico/obtener/Todos/' + conductorIdH)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             // Asegurarse de que data contenga la estructura correcta
             mostrarTodosHistorial(data);
         })

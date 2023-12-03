@@ -1,9 +1,24 @@
-body{
-    position: relative;
+a{
+    text-decoration: none;
 }
 
-.footer_container{
-    height: 70px;
+.header_container{
+    justify-content: space-between;
+}
+
+.header_logo{
+    display: flex;
+}
+
+.header_profile{
+    display: flex;
+    align-items: center;
+    color: #F2F0F2;
+}
+
+.header_profile>img{
+    width: auto;
+    height: 50px;
 }
 
 .description_container{
@@ -119,6 +134,10 @@ body{
     width: 64px;
     height: auto;
     margin-right: 20px;
+}
+
+.footer_container{
+    height: 70px;
 }
 
 /* Estilos de modal*/

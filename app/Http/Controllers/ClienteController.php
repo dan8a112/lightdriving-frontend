@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -14,6 +15,22 @@ class ClienteController extends Controller
 
     public function register_view(){
         return view('registroCliente');
+    }
+
+    public function profile_view($id){
+
+        $client = new Client();
+        //Se obtiene la informacion del cliente
+        $response = $client->get('localhost:8080/api/cliente/obtener/'.$id);
+
+        $cliente = json_decode($response->getBody());
+
+        $fechaCarbon = Carbon::parse($cliente->fechaNacimiento);
+        $fechaFormateada = $fechaCarbon->toDateString();
+
+        $cliente->fechaNacimiento = $fechaFormateada;
+
+        return view('perfilCliente', compact('cliente'));
     }
 
     public function principal_view($id){

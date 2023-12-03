@@ -42,6 +42,8 @@ Route::post('/cliente/crearCarrera', [ClienteController::class, 'crearCarrera'])
 
 Route::get('/cliente/obtenerCarrera/{id}', [ClienteController::class, 'obtenerCarrera'])->name('cliente.obtenerCarrera');
 
+Route::get('/cliente/perfil/{id}', [ClienteController::class, 'profile_view'])->name('cliente.verPerfil');
+
 
 //Rutas de Conductor
 

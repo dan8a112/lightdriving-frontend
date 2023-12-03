@@ -8,18 +8,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href={{asset('../resources/css/app.css')}}>
     <link rel="stylesheet" href={{asset('../resources/css/cliente.css')}}>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Bienvenida</title>
 </head>
 
     <body>
         <header>
-            <a class="header_container" href={{route('home')}}>
-                <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
-                <h3 class="title">LightDriving</h3>
-            </a>
+            <div class="header_container">
+                <a class="header_logo" href={{route('home')}}>
+                    <img class="icon" src={{asset('../resources/img/logo.svg')}} alt="">
+                    <h3 class="title">LightDriving</h3>
+                </a>
+                <a class="header_profile" href={{route('cliente.verPerfil', $cliente->id)}}>
+                    <span>{{$cliente->nombre}}</span>
+                    <img class="icon" src="{{asset('img/usuarioProfile.png')}}" alt="">
+                </a>
+            </div>
         </header>
         <div class="main_container">
             <h4 class="main_text">Bienvenido</h4>
