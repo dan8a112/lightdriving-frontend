@@ -216,4 +216,39 @@ class ClienteController extends Controller
         return $factura;
 
     }
+
+    //Actualizar cliente
+    public function actualizar(Request $request, $id){
+        try{
+            $client = new Client();
+
+            $headers = [
+                'Content-Type' => 'application/json'
+            ];
+    
+            $body = '{
+                "nombre": "'.$request->input('nombre').'",
+                "apellido": "'.$request->input('apellido').'",
+                "correo": "'.$request->input('correo').'",
+                "contrasena": "'.$request->input('contrasena').'",
+                "telefono": "'.$request->input('telefono').'",
+                "fechaNacimiento": "'.$request->input('fechaNacimiento').'",
+                "lat": "'.$request->input('lat').'",
+                "lng": "'.$request->input('lng').'",
+                "ubicacionNombre": "'.$request->input('ubicacionNombre').'"
+            }';
+    
+            $response = $client->put(('localhost:8080/api/cliente/actualizar/'.$id), [
+                'headers'=> $headers,
+                'body' => $body
+            ]);
+
+            return redirect(route('cliente.principal', $id));
+
+        }catch(RequestException $e){
+
+            return 'Error al realizar la solicitud'.$e->getMessage();
+
+        }
+    }
 }

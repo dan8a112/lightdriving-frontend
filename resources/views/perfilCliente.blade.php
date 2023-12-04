@@ -31,36 +31,37 @@
             <img class="profile_photo" src="{{asset('img/usuarioProfileXL.png')}}" alt="">
         </div>
         <div>
-            <form method="POST" action={{route('cliente.crear')}} @readonly(true)>
+            <form method="POST" action={{route('cliente.actualizar', $cliente->idCliente)}} @readonly(true)>
                 @csrf
-                @method('POST')
+                @method('PUT')
                 <div class="form_container">
                     <label class="form_label" for="nombre">Nombre</label >
-                    <input class="form_input" type="text" name="nombre" value={{$cliente->nombre}} required readonly>
-                    <label class="form_label" for="nombre">Apellido</label>
-                    <input class="form_input" type="text" name="apellido" value={{$cliente->apellido}} required readonly>
+                    <input class="form_input" type="text" name="nombre" id="nombre" value={{$cliente->nombre}} required readonly>
+                    <label class="form_label" for="apellido">Apellido</label>
+                    <input class="form_input" type="text" name="apellido" id="apellido" value={{$cliente->apellido}} required readonly>
                     <label class="form_label" for="correo">Correo electronico</label>
-                    <input class="form_input" type="email" name="correo" value={{$cliente->correo}} required readonly>
+                    <input class="form_input" type="email" name="correo" id="correo" value={{$cliente->correo}} required readonly>
                     <label class="form_label" for="contrasena">Contraseña</label>
-                    <input class="form_input" type="password" name="contrasena" value={{$cliente->contrasena}} required readonly>
+                    <input class="form_input" type="password" name="contrasena" id="contrasena" value={{$cliente->contrasena}} required readonly>
                     <label class="form_label" for="telefono">Telefono</label>
-                    <input class="form_input" type="tel" name="telefono" value={{$cliente->telefono}} required readonly>
+                    <input class="form_input" type="tel" name="telefono" id="telefono" value={{$cliente->telefono}} required readonly>
                     <label class="form_label" for="fechaNacimiento">Fecha de nacimiento</label>
-                    <input class="form_input" type="date" name="fechaNacimiento" value={{$cliente->fechaNacimiento}} required readonly>
+                    <input class="form_input" type="date" name="fechaNacimiento" id="fechaNacimiento" value={{$cliente->fechaNacimiento}} required readonly>
                 </div>
                 <div class="form_map">
                     <label class="form_label" >Ubicacion Actual</label>
-                    <input class="form_input" type="text" name="ubicacionNombre" id="ubicacionNombre" value={{$cliente->ubicacionNombre}}>
+                    <input class="form_input" type="text" name="ubicacionNombre" id="ubicacionNombre" value={{$cliente->ubicacionNombre}} readonly>
                     <div id="map"></div>
                     <input id="lat" type="hidden" name="lat" value={{$cliente->lat}}>
                     <input id="lng" type="hidden" name="lng" value={{$cliente->lng}}>
                 </div>
                 <div class="button_container">
-                    <button class="form_button_success" hidden>Enviar</button>
-                    <button type="button" class="form_button_success">Editar Informacion</button>
+                    <button class="form_button_success" id="enviar" hidden>Enviar</button>
+                    <button type="button" class="form_button_success" id="editar" onclick="editable()">Editar Informacion</button>
                 </div>
             </form>
         </div>
         <script src={{asset('js/registerMap.js')}}></script>
+        <script src={{asset('js/actualizarCliente.js')}}></script>
     </body>
 </html>

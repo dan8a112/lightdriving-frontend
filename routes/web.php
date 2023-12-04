@@ -44,6 +44,8 @@ Route::get('/cliente/obtenerCarrera/{id}', [ClienteController::class, 'obtenerCa
 
 Route::get('/cliente/perfil/{id}', [ClienteController::class, 'profile_view'])->name('cliente.verPerfil');
 
+Route::put('/cliente/actualizar/{id}', [ClienteController::class, 'actualizar'])->name('cliente.actualizar');
+
 
 //Rutas de Conductor
 
