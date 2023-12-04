@@ -23,7 +23,7 @@
                 </a>
                 <a class="header_profile" href={{route('cliente.verPerfil', $cliente->id)}}>
                     <span>{{$cliente->nombre}}</span>
-                    <img class="icon" src="{{asset('img/usuarioProfile.png')}}" alt="">
+                    <img class="profile_icon" src="{{asset('img/usuarioProfile.png')}}" alt="">
                 </a>
             </div>
         </header>

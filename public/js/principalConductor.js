@@ -30,14 +30,12 @@ function mostrarFacturaEnModal(data) {
     let telefono = document.getElementById('telefono');
 
     titulo.textContent = `Carrera No. ${data.idCarrera}`;
-
-    
     nombreApellido.textContent = `${data.cliente.nombre} ${data.cliente.apellido}`;
     fecha.textContent = data.fecha;
     origenCarrera.textContent = data.ubicacionInicial;
     destinoCarrera.textContent = data.ubicacionFinal;
     metodoPago.textContent = data.metodoPago;
-    telefono.textContent = data.cliente.telefono;
+    telefono.textContent = `Telefono: ${data.cliente.telefono}`;
 
     totalPagar.textContent = `L. ${data.total}`;
 }
