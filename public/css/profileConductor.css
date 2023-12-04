@@ -42,6 +42,27 @@
     margin: 20px 0;
 }
 
+.historicocar_container{
+    display: flex;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    height: 30vh;
+    padding: 5px;
+    overflow: auto;
+    margin: 20px 0;
+}
+
+.historicocar_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+    height: 20vh;
+}
+
 .car_card{
     display: flex;
     justify-content: space-between;
@@ -76,6 +97,13 @@
     font-weight: 500;
 }
 
+.historicocar_info_container{
+    justify-content: space-between;
+    width: 80%;
+    height: 100%;
+    font-weight: 500;
+}
+
 .car_info{
     display: flex;
     height: 100%;
@@ -101,4 +129,9 @@
 
 .bold{
     font-weight: 600;
+}
+
+.subtitle{
+    font-size: 1.125rem;
+    font-weight: 500;
 }

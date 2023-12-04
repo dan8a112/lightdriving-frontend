@@ -1,28 +1,33 @@
 let map;
+
+//Referencia a los inputs de la ubicacion en palabras
 const origenInput = document.getElementById('origen');
 const destinoInput = document.getElementById('destino');
 
+//Referencia a los inputs ocultos de coordenadas de inicio
 const latInicio = document.getElementById("latInicio");
 const lngInicio = document.getElementById("lngInicio");
 
+//Referencia a los inputs ocultos de coordenadas de final
 const latFinal = document.getElementById("latFinal");
 const lngFinal = document.getElementById("lngFinal");
 
-let uberMarkers =[];
+//Referencia a los marcadores de los ubers
+let uberMarkers =[]; 
 
 async function initMap(){
 
+    //Importa las librerias Map y Place de la API de google
     const { Map } = await google.maps.importLibrary("maps");
     const { Place } = await google.maps.importLibrary("places");
 
     let inicio = parseFloat(latInicio.value);
     let final = parseFloat(lngInicio.value);
 
-    console.log(inicio, final);
-
-    const coordsOrigen = {lat: inicio, lng: final};
+    const coordsOrigen = {lat: inicio, lng: final}; //Se establecen las ultimas coordenadas del usuario
     const coordsDestino = {lat: 14.0849808, lng:-87.1640323};
 
+    //Mapa
     map = new Map(document.getElementById("map"), {
         center: coordsOrigen,
         zoom: 15,
@@ -67,7 +72,9 @@ async function initMap(){
         lngFinal.value = coord.lng;
     })
 
-    //Evento de cambiar direccion
+    /**
+     * Eventos para cambiar direccionesde inicio y final cuando el marker cambi
+     */
     markerOrigen.addListener('dragend', function(event){
         let latitud = this.getPosition().lat();
         let longitud = this.getPosition().lng();
@@ -139,8 +146,6 @@ function buscarUbers(){
 
     let formData = new FormData(formularioBusqueda);
 
-    console.log(formData);
-
     fetch('/lightdriving-frontend/public/cliente/uberCercanos', {
         method: 'POST',
         headers: {
@@ -150,9 +155,8 @@ function buscarUbers(){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        if(data.exito!=null){ //Si existe la llave exito, no se encuentra en zona restringida
-            console.log(data);
+        if(data.exito){ //Si exito es true no esta en zona restringida
+            alert(data.mensaje);
             generarUberMarkers(data.ubers);
         }else{
             alert(data.mensaje);
@@ -175,25 +179,29 @@ function generarUberMarkers(ubers){
 
     for(let uber of ubers){
 
+        //Obtiene coordenadas
         let lat = uber.lat;
         let lng = uber.lng;
 
-        const coordUber = {lat, lng};
+        const coordUber = {lat, lng}; //Crea objeto latlng
 
         let iconPath;
 
-        if(uber.tipoUber.idTipoUber == 1){
+        //Si el uber es premium o standard
+        if(uber.tipoUber.idTipoUber == 1){ 
             iconPath = "../../img/uberPremium.png";
         }else{
             iconPath = "../../img/uberStandard.png"
         }
 
+        //Crea marcador
         uberMarker = new google.maps.Marker({
             position: coordUber,
             map,
             icon: iconPath,
         });
 
+        //Cuando se da click sobre un uber se abre modal
         uberMarker.addListener('click', (event)=>{
 
             let modalUber = new bootstrap.Modal('#carreraModal')
@@ -235,12 +243,13 @@ function crearCarrera(){
 
     let formularioBusqueda = document.getElementById('formularioBusqueda');
 
-    let formData = new FormData(formularioBusqueda);
+    let formData = new FormData(formularioBusqueda); //Saca los datos del formulario
 
     let idMetodoPago = document.getElementById('metodoPago_select');
     let ubicacionInicial = document.getElementById('origen').value;
     let ubicacionFinal = document.getElementById('destino').value;
 
+    //Agrega estos datos al formulario
     formData.append("idMetodoPago",idMetodoPago.value);
     formData.append("ubicacionInicial", ubicacionInicial);
     formData.append("ubicacionFinal", ubicacionFinal);
@@ -266,6 +275,9 @@ function crearCarrera(){
     
 } 
 
+/**
+ * Reinicia los marcadores
+ */
 function limpiarMarcadores(){
     for (let i = 0; i < uberMarkers.length; i++) {
         // Elimina cada marcador del mapa

@@ -10,7 +10,10 @@ use GuzzleHttp\Exception\RequestException;
 class ConductorController extends Controller
 {
     public function login(){
-        return view('loginConductor');
+
+        $incorrecto = false;
+
+        return view('loginConductor', compact('incorrecto'));
     }
 
     public function profile_view($idConductor){
@@ -25,7 +28,7 @@ class ConductorController extends Controller
 
             $fechaCarbon = Carbon::parse($historico->uberActual->fechaInicio);
             $fechaFormateada = $fechaCarbon->toDateString();
-
+            
             $historico->uberActual->fechaInicio = $fechaFormateada;
             
             return view('perfilConductor', compact('historico'));
@@ -58,8 +61,9 @@ class ConductorController extends Controller
 
             $conductorId = json_decode($response->getBody());
 
-            if($conductorId==-1){
-                return "Error de correo o contraseña";
+            if($conductorId<0){
+                $incorrecto = true;
+                return view('loginConductor', compact('incorrecto'));
             }else{
                 return redirect()->route('conductor.informacion', ['idConductor' => $conductorId]);
         
