@@ -28,7 +28,7 @@ class ConductorController extends Controller
 
             $fechaCarbon = Carbon::parse($historico->uberActual->fechaInicio);
             $fechaFormateada = $fechaCarbon->toDateString();
-            
+
             $historico->uberActual->fechaInicio = $fechaFormateada;
             
             return view('perfilConductor', compact('historico'));

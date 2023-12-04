@@ -8,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={{asset('css/register.css')}}>
+    <link rel="stylesheet" href={{asset('css/login.css')}}>
     <link rel="stylesheet" href={{asset('css/app.css')}}>
+    <link rel="stylesheet" href={{asset('css/cliente.css')}}>
     <title>Registro Uber</title>
 </head>
 
@@ -54,14 +55,16 @@
                 <input type="hidden" name="ubicacion" id="ubicacion">
                 <input class="form_input" name="places" type="text" id="places"  placeholder="Ingrese su ubicacion" required>
                 <div id="map"></div>
+            
                     <script src="{{ asset('js/map.js') }}"></script>
                     <script async
                         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi-_zRLxiQp8WgobySwVr3qRX729x0450&libraries=places&callback=initMap">
                     </script>
+    
                 </div>
     
             <div class="button_container">
-                <button class="form_button_success" type="submit">Cambiar</button>
+                <button class="form_button_success" type="submit">Registrarse</button>
                 <a href="{{ route('conductor.informacion',$idC)}}" class="form_button_back">Volver</a>
             </div>
         </form>

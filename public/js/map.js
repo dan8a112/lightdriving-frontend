@@ -67,7 +67,7 @@ async function getAdress(latlng){
 
 function initAutocomplete() {
     // Se crea el objeto de autocompletado para el campo de lugares
-    autoComplete = new google.maps.places.Autocomplete(lugares, {componentRestrictions: { country: "hn" }});
+    autoComplete = new google.maps.places.Autocomplete(lugares);
     autoComplete.addListener("place_changed", function () {
         // Se obtiene la información del lugar seleccionado
         const place = autoComplete.getPlace();

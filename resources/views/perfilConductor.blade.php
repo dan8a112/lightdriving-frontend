@@ -28,9 +28,10 @@
             <p>{{$historico->nombre}} {{$historico->apellido}}</p>
         </div>
 
-        <p class="subtitle">Vehiculo Actual</p>
+        <p>Vehiculo Actual</p>
         <div class="car_container">
             <section class="car_card">
+                
                 <img class="icon_car" src={{asset('img/carro.png')}} alt="icono auto">
                 <div class="car_info_container">
                     <div class="car_info">
@@ -49,39 +50,38 @@
             <a class="cambiarAuto_button" href="{{ route('uber.cambiar', ['idUber' => $historico->uberActual->idHistorico,'idConductor' => $historico->idConductor] ) }}">Cambiar Auto</a>   
         </div>
         
-        <p class="subtitle">Historico vehiculos</p>
+        <p>Historico vehiculos</p>
 
-        <div class="historicocar_container">
         @foreach($historico->historicoUbers as $histoUber)
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  Vehiculo {{$histoUber->idHistorico}}
+                  {{$histoUber->idHistorico}}
                 </button>
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                <section class="historicocar_card">
+                <section class="car_card">
                     <img class="icon_car" src={{asset('img/carro.png')}} alt="icono auto">
-                    <div class="historicocar_info_container">
+                    <div class="car_info_container">
                         <div class="car_info">
-                            <div class="info_item1">
-                                <p><span class="bold">Marca: </span><span>{{$histoUber->marca}}</span></p>
-                                <p><span class="bold">Color: </span><span>{{$histoUber->color}}</span></p>
-                                <p><span class="bold">Placa: </span><span>{{$histoUber->placa}}</span></p>
-                            
-                                <p><span class="bold">Año: </span><span>{{$histoUber->anio}}</span></p>
-                                <p><span class="bold">Desde: </span><span>{{$histoUber->fechaInicio}}</span></p>
-                                <p><span class="bold">Hasta: </span><span>{{$histoUber->fechaFinal}}</span></p>
-                            </div>
+                            <p><span class="bold">Marca: </span><span>{{$histoUber->marca}}</span></p>
+                            <p><span class="bold">Color: </span><span>{{$histoUber->color}}</span></p>
+                            <p><span class="bold">Placa: </span><span>{{$histoUber->placa}}</span></p>
+                            <p><span class="bold">Año: </span><span>{{$histoUber->anio}}</span></p>
+                            <p><span class="bold">Desde: </span><span>{{$histoUber->fechaInicio}}</span></p>
+                            <p><span class="bold">Hasta: </span><span>{{$histoUber->fechaFinal}}</span></p>
                         </div>
-                    </div> 
-                </section>           
+                    </div>    
+                </section>              
               </div>
             </div>
         </div>
         @endforeach
-        </div>
+
+
+
+
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 </html>
