@@ -17,52 +17,12 @@ function initMap() {
     marker = new google.maps.Marker({
         position: argCoords,
         map: map,
+        title: "Hello World!",
         draggable: true
     });
 
     // Se inicia la funcionalidad de autocompletado
     initAutocomplete();
-}
-
-
-markerOrigen.addListener('dragend', function(event){
-    let latitud = this.getPosition().lat();
-    let longitud = this.getPosition().lng();
-    latInicio.value = latitud;
-    lngInicio.value = longitud;
-
-    let latlng = new google.maps.LatLng(latitud,longitud);
-
-    getAdress(latlng).then(function(results) {
-        origenInput.value = results.formatted_address;
-    })
-    .catch(function(error) {
-        console.error(error);
-    });
-
-});
-
-
-
-/**
- * Obtiene el nombre de una ubicacion mediante sus coordenadas
- * @param {*} latlng 
- * @returns 
- */
-async function getAdress(latlng){
-    const {Geocoder} = await google.maps.importLibrary("geocoding");
-
-    let geocoder = new Geocoder();
-
-    return new Promise((resolve, reject) => {
-        geocoder.geocode({'location': latlng}, function(results, status){
-            if (status == 'OK') {
-                resolve(results[1]);
-            } else {
-                reject('Geocode no fue exitoso por esta razon: ' + status);
-            }
-        });
-    });
 }
 
 function initAutocomplete() {

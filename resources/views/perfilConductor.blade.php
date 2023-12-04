@@ -47,7 +47,7 @@
                     </div>
                 </div> 
             </section>
-            <a class="cambiarAuto_button" href="{{ route('uber.cambiar', ['idUber' => $historico->uberActual->idHistorico,'idConductor' => $historico->idConductor] ) }}">Cambiar Auto</a>   
+            <a class="cambiarAuto_button" href="{{ route('uber.cambiar', ['idUber' => $conductor->idUber,'idConductor' => $historico->idConductor] ) }}">Cambiar Auto</a>   
         </div>
         
         <p>Historico vehiculos</p>

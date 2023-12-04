@@ -20,7 +20,7 @@ class UberController extends Controller
 
             $response = $cliente->get('http://localhost:8080/api/tipoUber/obtener/todos');
 
-            $tiposUber = json_decode($response, true);
+            $tiposUber = json_decode($response->getBody(), true);
 
             // Puedes pasar los tipos de Uber a la vista
             return view('registroConductor', compact("tiposUber"));
