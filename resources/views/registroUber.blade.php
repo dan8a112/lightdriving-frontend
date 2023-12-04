@@ -22,13 +22,6 @@
             </div>
         </header>
 
-        <div class="main_container">
-            <h4 class="main_text">Ingresa los</h4>
-            <h4 class="main_text">datos de tu vehiculo</h4>
-        </div>
-
-
-
         <form method="POST" action={{route('uber.cambiarAuto',  ['id' => $idU, "idConductor"=>$idC]) }}>
             @csrf
         @method('PUT')         
@@ -72,16 +65,13 @@
     
             <div class="button_container">
                 <button class="form_button_success" type="submit">Registrarse</button>
-                <a href="{{ route('conductor.login')}}" class="form_button_back">Volver</a>
+                <a href="{{ route('conductor.informacion',$idC)}}" class="form_button_back">Volver</a>
             </div>
         </form>
 
         <div class="description_container">
             <p class="description_text">¿Ya tienes una cuenta?</p>
             <a href={{route('conductor.login')}}><b>Inicia Sesion</b></a>
-        </div>
-        <div class="final_container">
-            <img class="form_img" src={{asset('img/auto.jpg')}} alt="">
         </div>
         <footer>
             <div class="footer_container">

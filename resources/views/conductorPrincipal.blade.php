@@ -22,23 +22,13 @@
             <div class="header_container">
                 <img class="icon" src={{asset('img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
-                <a href={{route('conductor.verPerfil', $conductor->idConductor)}}>perfil</a>
+                <a href="{{ route('conductor.verPerfil', ['idConductor' => $conductor->idConductor, 'idUber' => $conductor->idUber]) }}">perfil</a>
+
             </div>
         </header>
         <div class="main_container">
             <h4 class="main_text">Bienvenido</h4>
             <h4 class="main_text">{{$conductor->nombre." ".$conductor->apellido."" }} 
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                      Mas opciones
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        
-                      <li><a class="dropdown-item" id="btn_info" data-bs-toggle="modal" data-bs-target="#info" data-id-Conductor="{{$conductor->idConductor}}" href="">Auto actual</a></li>
-                      <li><a class="dropdown-item" href="{{ route('uber.cambiar', ['idUber' => $conductor->idUber,'idConductor' => $conductor->idConductor] ) }}">Cambiar Auto</a></li>
-                      <li><a class="dropdown-item" id="btn_historial" data-bs-toggle="modal" data-bs-target="#info_historial" data-id-Conducto="{{$conductor->idConductor}}" href="">Historial de autos</a></li>
-                    </ul>
-                  </div>
         <p class="historial_title">Carrera en Curso</p>
         
         <div class="">
@@ -55,7 +45,8 @@
 
                     </section>
                     <div class="historial_mas">
-                        <a href="{{ route('conductor.finalizar', ['idConductor' => $conductor->idConductor, 'idCarrera' => $conductor->carreraEnProgreso->idCarrera]) }}">Finalizar Carrera</a>
+                        
+                      <a href="{{ route('conductor.finalizar', ['idConductor' => $conductor->idConductor, 'idCarrera' => $conductor->carreraEnProgreso->idCarrera]) }}">Finalizar Carrera</a>
 
                             
                     </div>
@@ -123,66 +114,7 @@
                 </div>
               </div>
         </div>
-        <!--------------------------------------------------------------------------------------------------------->
         
-<!-- Modal -->
-<div class="modal fade" id="info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Información del Auto</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div id="marca"></div>
-            <div id="color"></div>
-            <div id="placa"></div>
-            <div id="anio"></div>
-            <div id="fechaInicio"></div>
-           
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!------MODAL TOTAL------>
- 
-  <div class="modal fade" id="info_historial" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Información de los autos</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="nombreApellidoTotal"></div>
-                <h5 class="modal-title" id="exampleModalLabel">Informacion del auto actual</h5>
-                <div id="uberActualTotal"></div>
-                <div id="marcaTotal"></div>
-                <div id="colorTotal"></div>
-                <div id="placaTotal"></div>
-                <div id="anioTotal"></div>
-                <div id="fechaInicioTotal"></div>
-                <div id="fechaFinalTotal"></div>
-                <h5 class="modal-title" id="exampleModalLabel">Historial Autos</h5>
-                <div id="uberActualHistorial"></div>
-                <div id="marcaHistorial"></div>
-                <div id="colorHistorial"></div>
-                <div id="placaHistorial"></div>
-                <div id="anioHistorial"></div>
-                <div id="fechaInicioHistorial"></div>
-                <div id="fechaFinalHistorial"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
         <div class="historial_card">
             <div class="button_container">
                 <a href="{{route('conductor.login')}}" class="form_button_back" >Cerrar sesion</a>

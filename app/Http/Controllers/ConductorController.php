@@ -12,8 +12,28 @@ class ConductorController extends Controller
         return view('loginConductor');
     }
 
-    public function profile_view($id){
-        return view('perfilConductor');
+    public function profile_view($idConductor, $idUber){
+        try {
+            $client = new Client();
+    
+        
+            $response = $client->get('http://localhost:8080/api/historicoUber/obtenerHistoricoConductor/'.$idConductor);
+            
+            
+            $historico = json_decode($response->getBody());
+    
+            $responseConductor = $client->get("http://localhost:8080/api/conductor/obtnerInfoPaginaPrincipal/".$idConductor);
+            
+
+                $conductor = json_decode($responseConductor->getBody());
+    
+                // Ahora puedes usar la variable $conductor para acceder a la información del conductor
+                return view('perfilConductor', compact('conductor','historico'));
+            
+        } catch (RequestException $e) {
+            return 'Error al realizar la solicitud'.$e->getMessage();
+        }
+
     }
 
     //Envia los parametros de correo y contraseña como objeto request para hacer la validacion del inicia de sesion
@@ -53,7 +73,7 @@ class ConductorController extends Controller
     public function obtenerInformacion($idConductor) {
         try {
             $client = new Client();
-    
+            
             // Realiza la solicitud para obtener la información principal utilizando el $idConductor
             $responseConductor = $client->get("http://localhost:8080/api/conductor/obtnerInfoPaginaPrincipal/".$idConductor);
             
