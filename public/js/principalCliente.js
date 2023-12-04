@@ -1,3 +1,6 @@
+/**
+ * Selecciona todos los botones con la class verDetalle_button y les agrega el evento para ver detalle
+ */
 let verDetalleButtons = document.getElementsByClassName('verDetalle_button');
 
 Array.from(verDetalleButtons).forEach( (button) => {
@@ -18,6 +21,10 @@ Array.from(verDetalleButtons).forEach( (button) => {
     });
 });
 
+/**
+ * Llena la modal con los datos de la respuesta a la peticion de obtener carrera
+ * @param {} data 
+ */
 function mostrarFacturaEnModal(data){
     let titulo = document.getElementById('idCarreraTitulo');
     let nombreApellido = document.getElementById('nombreApellido');

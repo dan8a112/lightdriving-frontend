@@ -1,3 +1,6 @@
+/**
+ * Cambia los inputs de la vista perfilCliente a editables
+ */
 function editable(){
     document.getElementById('nombre').readOnly = false;
     document.getElementById('apellido').readOnly = false;

@@ -9,17 +9,26 @@ use GuzzleHttp\Exception\RequestException;
 
 class ClienteController extends Controller
 {
+    /**
+     * Vista del login del cliente
+     */
     public function login_view(){
 
-        $incorrecto = false;
+        $incorrecto = false; //Dato para login exitoso o fallido
 
         return view('loginCliente', compact('incorrecto'));
     }
 
+    /**
+     * Vista del resgistro del cliente
+     */
     public function register_view(){
         return view('registroCliente');
     }
 
+    /**
+     * Vista del perfil del cliente
+     */
     public function profile_view($id){
 
         $client = new Client();
@@ -36,9 +45,13 @@ class ClienteController extends Controller
         return view('perfilCliente', compact('cliente'));
     }
 
+    /**
+     * Vista principal del cliente
+     */
     public function principal_view($id){
 
         $client = new Client();
+        
         //Se obtiene la informacion del cliente
         $response = $client->get('localhost:8080/api/factura/obtenerFacturas/cliente/'.$id);
 
@@ -47,10 +60,14 @@ class ClienteController extends Controller
         return view('principalCliente', compact('cliente'));
     }
 
+
+    /**
+     * Vista para crear carrera
+     */
     public function carrera_view($id){
 
         $client = new Client();
-        //Se obtiene la informacion del cliente
+        //Se obtiene la informacion de la ubicacion actual del cliente
         $response = $client->get('localhost:8080/api/cliente/obtenerUbicacion/'.$id);
 
         $coordenadas = json_decode($response->getBody());
@@ -58,7 +75,9 @@ class ClienteController extends Controller
         return view('crearCarrera', compact('id','coordenadas'));
     }
 
-    //Envio de formulario de registro de cliente
+    /**
+     * Funcion para hacer POST y crear un nuevo usuario
+     */
     public function crear(Request $request){
         try{
             $client = new Client();
@@ -93,7 +112,9 @@ class ClienteController extends Controller
         }
     }
 
-    //Envio de formulario de login de cliente
+    /**
+     * Funcion para autenticar correo y contraseña del usuario
+     */
     public function autenticar(Request $request){
         try {
             
@@ -121,8 +142,6 @@ class ClienteController extends Controller
                 $incorrecto = true;
                 return view('loginCliente', compact('incorrecto'));;
             }
-
-            
 
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();
@@ -155,17 +174,16 @@ class ClienteController extends Controller
 
             $uberResponse = json_decode($response->getBody());
 
-            if($uberResponse->exito){
-                return $uberResponse;
-            }else{
-               return $uberResponse;
-            }
-
+            return $uberResponse;
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();
         }
     }
 
+
+    /**
+     * Crea una nueva carrera al cliente
+     */
     public function crearCarrera(Request $request){
         try {
             
@@ -192,6 +210,7 @@ class ClienteController extends Controller
                 'body' => $body
             ]);
 
+            //Si se creo la carrera retorna un objeto con el id del cliente para volver a la vista principal
             if($response){
                 $dataResponse = '{
                     "id": "'.$request->input('idCliente').'",
@@ -209,6 +228,9 @@ class ClienteController extends Controller
         }
     }
 
+    /**
+     * Obtiene las carreras del cliente
+     */
     public function obtenerCarrera($id){
 
         $cliente = new Client();
@@ -221,7 +243,9 @@ class ClienteController extends Controller
 
     }
 
-    //Actualizar cliente
+    /**
+     * Actualiza el cliente desde el perfil
+     */
     public function actualizar(Request $request, $id){
         try{
             $client = new Client();
