@@ -10,7 +10,10 @@ use GuzzleHttp\Exception\RequestException;
 class ClienteController extends Controller
 {
     public function login_view(){
-        return view('loginCliente');
+
+        $incorrecto = false;
+
+        return view('loginCliente', compact('incorrecto'));
     }
 
     public function register_view(){
@@ -115,7 +118,8 @@ class ClienteController extends Controller
             if($id>0){
                 return redirect()->route('cliente.principal', $id);
             }else{
-                return "Correo o contrasenia incorrecto";
+                $incorrecto = true;
+                return view('loginCliente', compact('incorrecto'));;
             }
 
             
@@ -154,7 +158,7 @@ class ClienteController extends Controller
             if($uberResponse->exito){
                 return $uberResponse;
             }else{
-               return $uberResponse->mensaje;
+               return $uberResponse;
             }
 
         } catch (RequestException $e) {

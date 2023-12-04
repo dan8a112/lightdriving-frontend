@@ -150,9 +150,8 @@ function buscarUbers(){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        if(data.exito!=null){ //Si existe la llave exito, no se encuentra en zona restringida
-            console.log(data);
+        if(data.exito){ //Si existe la llave exito, no se encuentra en zona restringida
+            alert(data.mensaje);
             generarUberMarkers(data.ubers);
         }else{
             alert(data.mensaje);

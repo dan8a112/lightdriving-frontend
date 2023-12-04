@@ -31,10 +31,13 @@
             @method('POST')
             <div class="form_container">
                 <label class="form_label" for="correo">Correo electronico</label>
-                <input class="form_input" type="text" name="correo" placeholder="ejemplo@dominio.com">
+                <input class="form_input" type="text" name="correo" placeholder="conductor@dominio.com">
                 <label class="form_label" for="contrasena">Contraseña</label>
                 <input class="form_input" type="password" name="contrasena">
             </div>
+            @if ($incorrecto)
+            <p class="error">Contraseña o correo incorrecto, vuelva a intentarlo</p>
+            @endif
             <div class="button_container">
                 <button class="form_button_success" type="submit">Iniciar sesion</button>
                 <a href={{route('home')}} class="form_button_back">Volver</a>
