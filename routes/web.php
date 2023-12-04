@@ -56,7 +56,7 @@ Route::post('/conductor/crear', [ConductorController::class, 'crear'])->name('co
 Route::get('/conductor/informacion/{idConductor}', [ConductorController::class, 'obtenerInformacion'])->name('conductor.informacion');
 Route::get('/conductor/finalizar/{idConductor}/{idCarrera}', [ConductorController::class, 'terminarCarrera'])->name('conductor.finalizar');
 Route::get('/conductor/obtenerCarrera/{id}', [ConductorController::class, 'obtenerCarrera'])->name('conductor.obtener');
-Route::get('/conductor/perfil/{idConductor}', [ConductorController::class, 'profile_view'])->name('conductor.verPerfil');
+Route::get('/conductor/perfil/{idConductor}/{idUber}', [ConductorController::class, 'profile_view'])->name('conductor.verPerfil');
 
 
 
