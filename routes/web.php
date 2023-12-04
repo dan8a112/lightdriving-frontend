@@ -47,7 +47,6 @@ Route::get('/cliente/perfil/{id}', [ClienteController::class, 'profile_view'])->
 Route::put('/cliente/actualizar/{id}', [ClienteController::class, 'actualizar'])->name('cliente.actualizar');
 
 
-//Rutas de Conductor
 
 //CONDUCTOR
 Route::get('/conductor/login', [ConductorController::class, 'login'])->name('conductor.login');

@@ -77,17 +77,10 @@ class ConductorController extends Controller
             // Realiza la solicitud para obtener la información principal utilizando el $idConductor
             $responseConductor = $client->get("http://localhost:8080/api/conductor/obtnerInfoPaginaPrincipal/".$idConductor);
             
-            /******************************************** */
-            // Verifica si la solicitud fue exitosa
-            if ($responseConductor->getStatusCode() == 200) {
-                $conductor = json_decode($responseConductor->getBody());
+            $conductor = json_decode($responseConductor->getBody());
     
-                // Ahora puedes usar la variable $conductor para acceder a la información del conductor
-                return view('conductorPrincipal', compact('conductor'));
-            } else {
-                // Maneja el caso de error de la solicitud de obtener información del conductor
-                return "Error al obtener información del conductor";
-            }
+            return view('conductorPrincipal', compact('conductor'));
+            
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();
         }
@@ -100,14 +93,9 @@ class ConductorController extends Controller
             // Realiza la solicitud para cambiar el estado de la carrera utilizando el $idConductor
             $response = $client->put("http://localhost:8080/api/carreras/cambiarEstado/".$idCarrera);
             
-            // Verifica si la solicitud fue exitosa
-            if ($response->getStatusCode() == 200) {
-                // Redirige directamente a la página de información del conductor
-                return redirect()->route('conductor.informacion', $temporalId);
-            } else {
-                // Maneja el caso de error de la solicitud para cambiar el estado de la carrera
-                return "Error al cambiar el estado de la carrera";
-            }
+            // Redirige directamente a la página de información del conductor
+            return redirect()->route('conductor.informacion', $temporalId);
+            
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud: ' . $e->getMessage();
         }
@@ -122,9 +110,6 @@ class ConductorController extends Controller
                 // Obtenemos la ubicación desde la solicitud
                 $ubicacion = json_decode($request->input('ubicacion'), true);
         
-                // En este punto, $ubicacion contiene las coordenadas latitud, longitud y el nombre del lugar
-        
-                // Construimos el cuerpo de la solicitud incluyendo la ubicación
                 $body = [
                     "nombre" => $request->input('nombre'),
                     "apellido" => $request->input('apellido'),
@@ -159,9 +144,8 @@ class ConductorController extends Controller
                 // Obtiene el cuerpo de la respuesta del servidor
                 $responseData = json_decode($response->getBody(), true);
         
-                // Maneja la respuesta según tus necesidades
         
-                return view('home');; // Retorna la respuesta recibida desde el servidor
+                return view('home');
             } catch (RequestException $e) {
                 // Manejo de errores
                 return 'Error al realizar la solicitud: ' . $e->getMessage();

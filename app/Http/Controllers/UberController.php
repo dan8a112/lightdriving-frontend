@@ -14,16 +14,12 @@ class UberController extends Controller
 
 
     public function obtenerTiposUber(){
+        $cliente = new Client();
+        
         try {
-            $url = 'http://localhost:8080/api/tipoUber/obtener/todos';
-            $response = file_get_contents($url);
 
-            if ($response === false) {
-                // Manejar el error, lanzar una excepción, o realizar alguna acción específica.
-                throw new Exception("Error al obtener los tipos de Uber.");
-            }
+            $response = $cliente->get('http://localhost:8080/api/tipoUber/obtener/todos');
 
-            // Decodificar el JSON obtenido
             $tiposUber = json_decode($response, true);
 
             // Puedes pasar los tipos de Uber a la vista
@@ -42,15 +38,11 @@ class UberController extends Controller
         try {
             $response = $cliente->get('http://localhost:8080/api/historicoUber/obtener/'.$idConductor);
             
-            if ($response->getStatusCode() === 200) {
-                $historico = json_decode($response->getBody());
+            $historico = json_decode($response->getBody());
     
-                return $historico;
-            } else {
-                return ['error' => 'Error en la respuesta de la API'];
-            }
+            return $historico;
+           
         } catch (RequestException $e) {
-            // Manejar el error, puedes loguearlo o devolver un mensaje de error
             return ['error' => 'Error al obtener datos de la API'];
         }
     }
@@ -68,67 +60,65 @@ class UberController extends Controller
 
     }
 
-    public function cambiarAuto(Request $request, $idUber, $idConductor)
-{
-    try {
-        $ubicacion = json_decode($request->input('ubicacion'), true);
+    
+/**
+ * Recibe el Request del formulario el idUber con el que hará el cambio de auto
+ * idConductor lo manda a conductor informacion para que pueda desplezar lo necesario
+ */
 
-        $body = 
-            [
-                
-                "marca" => $request->input('marca'),
-                "color" => $request->input('color'),
-                "placa" => $request->input('placa'),
-                "anio" => $request->input('anio'),
-                "tipoUber" => $request->input('tipouber'),
-                "ubicacionNombre" => $request->input('places'), // Utilizamos el nombre del lugar desde la ubicación
-                "lat" => $ubicacion['latitud'],
-                "lng" => $ubicacion['longitud'],
-            ];
-            
-            $jsonBody = json_encode($body);
+    public function cambiarAuto(Request $request, $idUber, $idConductor){
         
-                // Inicializa el cliente Guzzle
-            $client = new Client();
+            try {
+            $ubicacion = json_decode($request->input('ubicacion'), true);
 
-            $response = $client->put("http://localhost:8080/api/uber/cambiarCarro/".$idUber, [
-                'headers' => ['Content-Type' => 'application/json'],
-                'body' => $jsonBody,
-            ]);      
-
-            $responseData = json_decode($response->getBody(), true);
-
+            $body = 
+                [
+                    
+                    "marca" => $request->input('marca'),
+                    "color" => $request->input('color'),
+                    "placa" => $request->input('placa'),
+                    "anio" => $request->input('anio'),
+                    "tipoUber" => $request->input('tipouber'),
+                    "ubicacionNombre" => $request->input('places'),
+                    "lat" => $ubicacion['latitud'],
+                    "lng" => $ubicacion['longitud'],
+                ];
+                
+                $jsonBody = json_encode($body);
             
-        return redirect()->route('conductor.informacion', $idConductor);
-    } catch (RequestException $e) {
-        // Manejo de errores
-        return 'Error al realizar la solicitud: ' . $e->getMessage();
+                    // Inicializa el cliente Guzzle
+                $client = new Client();
+
+                $response = $client->put("http://localhost:8080/api/uber/cambiarCarro/".$idUber, [
+                    'headers' => ['Content-Type' => 'application/json'],
+                    'body' => $jsonBody,
+                ]);      
+
+                $responseData = json_decode($response->getBody(), true);
+
+                
+            return redirect()->route('conductor.informacion', $idConductor);
+        } catch (RequestException $e) {
+        
+            return 'Error al realizar la solicitud: ' . $e->getMessage();
+        }
+
     }
 
-}
-
-    public function cambiar($idUber, $idConductor){
-        $idU=$idUber;
-        $idC=$idConductor;
-
+    public function cambiar($idU, $idC){
+        
+            $cliente = new Client();
         try {
-            $url = 'http://localhost:8080/api/tipoUber/obtener/todos';
-            $response = file_get_contents($url);
+             $response = $cliente->get('http://localhost:8080/api/tipoUber/obtener/todos');
 
-            if ($response === false) {
-                // Manejar el error, lanzar una excepción, o realizar alguna acción específica.
-                throw new Exception("Error al obtener los tipos de Uber.");
-            }
+              $tiposUber = json_decode($response->getBody(), true);
 
-            // Decodificar el JSON obtenido
-            $tiposUber = json_decode($response, true);
+               return view('registroUber', compact("tiposUber","idU","idC"));
 
-            // Puedes pasar los tipos de Uber a la vista
-            return view('registroUber', compact("tiposUber","idU","idC"));
-
-        } catch (Exception $e) {
-            // Manejar la excepción, por ejemplo, redirigir a una página de error.
+            } catch (Exception $e) {
+         
             return view('error', ['message' => $e->getMessage()]);
         }
     }
 }
+
