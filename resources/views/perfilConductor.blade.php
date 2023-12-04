@@ -15,7 +15,7 @@
 </head>
     <header>
         <div class="header_container">
-            <a class="backbutton" href="{{ route('conductor.informacion',$conductor->idConductor)}}" class="form_button_back">Volver</a>
+            <a class="backbutton" href="{{ route('conductor.informacion',$historico->idConductor)}}" class="form_button_back">Volver</a>
             <h3 class="title">Perfil</h3>
         </div>
     </header>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="info_container">
-            <p>{{$conductor->nombre}} {{$conductor->apellido}}</p>
+            <p>{{$historico->nombre}} {{$historico->apellido}}</p>
         </div>
 
         <p>Vehiculo Actual</p>
@@ -42,7 +42,7 @@
                         <p><span class="bold">Desde: </span><span>{{$historico->uberActual->fechaInicio}}</span></p>
                     </div>
                 </div> 
-                <a class="dropdown-item" href="{{ route('uber.cambiar', ['idUber' => $conductor->idUber,'idConductor' => $conductor->idConductor] ) }}">Cambiar Auto</a>   
+                <a class="dropdown-item" href="{{ route('uber.cambiar', ['idUber' => $historico->uberActual->idHistorico,'idConductor' => $historico->idConductor] ) }}">Cambiar Auto</a>   
             </section>
         </div>
         
@@ -66,6 +66,7 @@
                             <p><span class="bold">Placa: </span><span>{{$histoUber->placa}}</span></p>
                             <p><span class="bold">Año: </span><span>{{$histoUber->anio}}</span></p>
                             <p><span class="bold">Desde: </span><span>{{$histoUber->fechaInicio}}</span></p>
+                            <p><span class="bold">Hasta: </span><span>{{$histoUber->fechaFinal}}</span></p>
                         </div>
                     </div>    
                 </section>              

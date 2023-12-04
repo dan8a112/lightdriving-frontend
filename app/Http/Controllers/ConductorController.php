@@ -12,7 +12,7 @@ class ConductorController extends Controller
         return view('loginConductor');
     }
 
-    public function profile_view($idConductor, $idUber){
+    public function profile_view($idConductor){
         try {
             $client = new Client();
     
@@ -22,13 +22,8 @@ class ConductorController extends Controller
             
             $historico = json_decode($response->getBody());
     
-            $responseConductor = $client->get("http://localhost:8080/api/conductor/obtnerInfoPaginaPrincipal/".$idConductor);
             
-
-                $conductor = json_decode($responseConductor->getBody());
-    
-                // Ahora puedes usar la variable $conductor para acceder a la información del conductor
-                return view('perfilConductor', compact('conductor','historico'));
+                return view('perfilConductor', compact('historico'));
             
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();
