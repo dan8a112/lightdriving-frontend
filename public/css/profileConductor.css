@@ -37,7 +37,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #E5E5E5;
-    height: 20vh;
+    height: auto;
     overflow: auto;
     margin: 20px 0;
 }
@@ -51,17 +51,52 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 90%;
     margin: 10px;
+    padding: 15px;
+    height: 15vh;
+}
+
+
+.cambiarAuto_button{
+    text-decoration: none;
+    background-color:   #117864;
+    text-align: center;
     padding: 10px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    margin-bottom: 15px;
 }
 
 .car_info_container{
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 80%;
+    height: 80%;
     font-weight: 500;
+}
+
+.car_info{
+    display: flex;
+    height: 100%;
 }
 
 .car_info>p{
     margin-bottom: 5px;
+}
+
+.info_item1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
+.info_item2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 40%;
 }
 
 .bold{
