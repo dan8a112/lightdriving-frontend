@@ -15,10 +15,10 @@
 
     <body>
         <header>
-            <div class="header_container">
+            <a class="header_container" href="{{route('home')}}">
                 <img class="icon" src={{asset('img/logo.svg')}} alt="">
                 <h3 class="title">LightDriving</h3>
-            </div>
+            </a>
         </header>
 
         <div class="main_container">

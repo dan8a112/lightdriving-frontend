@@ -63,5 +63,11 @@
         </div>
         <script src={{asset('js/registerMap.js')}}></script>
         <script src={{asset('js/actualizarCliente.js')}}></script>
+        <footer>
+            <div class="footer_container">
+                <h3 class="footer_text">LightDriving</h3>
+                <img class="footer_social" src={{asset('img/social.svg')}} alt="">
+            </div>
+        </footer>
     </body>
 </html>
