@@ -35,15 +35,19 @@
                 <img class="icon_car" src={{asset('img/carro.png')}} alt="icono auto">
                 <div class="car_info_container">
                     <div class="car_info">
-                        <p><span class="bold">Marca: </span><span>{{$historico->uberActual->marca}}</span></p>
-                        <p><span class="bold">Color: </span><span>{{$historico->uberActual->color}}</span></p>
-                        <p><span class="bold">Placa: </span><span>{{$historico->uberActual->placa}}</span></p>
-                        <p><span class="bold">Año: </span><span>{{$historico->uberActual->anio}}</span></p>
-                        <p><span class="bold">Desde: </span><span>{{$historico->uberActual->fechaInicio}}</span></p>
+                        <div class="info_item1">
+                            <p><span class="bold">Marca: </span><span>{{$historico->uberActual->marca}}</span></p>
+                            <p><span class="bold">Color: </span><span>{{$historico->uberActual->color}}</span></p>
+                            <p><span class="bold">Placa: </span><span>{{$historico->uberActual->placa}}</span></p>
+                        </div>
+                        <div class="info_item2">
+                            <p><span class="bold">Año: </span><span>{{$historico->uberActual->anio}}</span></p>
+                            <p><span class="bold">Desde: </span><span>{{$historico->uberActual->fechaInicio}}</span></p>
+                        </div>
                     </div>
                 </div> 
-                <a class="dropdown-item" href="{{ route('uber.cambiar', ['idUber' => $historico->uberActual->idHistorico,'idConductor' => $historico->idConductor] ) }}">Cambiar Auto</a>   
             </section>
+            <a class="cambiarAuto_button" href="{{ route('uber.cambiar', ['idUber' => $historico->uberActual->idHistorico,'idConductor' => $historico->idConductor] ) }}">Cambiar Auto</a>   
         </div>
         
         <p>Historico vehiculos</p>

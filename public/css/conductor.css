@@ -161,11 +161,11 @@ a{
 .actual_info{
     display: flex;
     margin-left: 10px;
-    width: 50%;
 }
 
 .negrita{
     font-weight: 600;
+    width: 50%;
 }
 
 .finalizarCarrera_button{

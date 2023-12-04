@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -21,9 +22,13 @@ class ConductorController extends Controller
             
             
             $historico = json_decode($response->getBody());
-    
+
+            $fechaCarbon = Carbon::parse($historico->uberActual->fechaInicio);
+            $fechaFormateada = $fechaCarbon->toDateString();
+
+            $historico->uberActual->fechaInicio = $fechaFormateada;
             
-                return view('perfilConductor', compact('historico'));
+            return view('perfilConductor', compact('historico'));
             
         } catch (RequestException $e) {
             return 'Error al realizar la solicitud'.$e->getMessage();

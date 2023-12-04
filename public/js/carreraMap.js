@@ -57,7 +57,7 @@ async function initMap(){
     })
 
     //Autocompletado de direccion de origen
-    let autocompleteDestino = new google.maps.places.Autocomplete(destinoInput);
+    let autocompleteDestino = new google.maps.places.Autocomplete(destinoInput,{componentRestrictions: { country: "hn" }});
     autocompleteDestino.addListener('place_changed', ()=>{
         let place = autocompleteDestino.getPlace();
         let coord = place.geometry.location.toJSON();
