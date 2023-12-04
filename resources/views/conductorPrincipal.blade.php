@@ -21,7 +21,7 @@
                     <img class="icon" src={{asset('img/logo.svg')}} alt="">
                     <h3 class="title">LightDriving</h3>
                 </a>
-                <a class="header_profile" href="{{ route('conductor.verPerfil', ['idConductor' => $conductor->idConductor]) }}">
+                <a class="header_profile" href="{{ route('conductor.verPerfil', ['idConductor' => $conductor->idConductor, 'idUber' => $conductor->idUber]) }}">
                     <span>{{$conductor->nombre}}</span>
                     <img class="icon_profile" src="{{asset('img/uberProfile.png')}}" alt="">
                 </a>
